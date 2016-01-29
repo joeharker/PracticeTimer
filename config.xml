@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.007dev.PracticeTimer" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.Joe007dev.PracticeTimer" version="1.0.0">
   <name>Practice Timer</name>
   <description>Practice timer for live fire and dry practice handgun presenting from the holster.</description>
   <author href="http://007dev.com" email="joeharker@007dev.com">Joe Harker</author>
