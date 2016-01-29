@@ -11,7 +11,7 @@
 		Practice timer for live fire and dry practice handgun presenting from the holster.
 		20 standard drills each with 0 to 3 seconds random start times.
 		8 emergency drills mixed in randomly.
-        Emergency reloads calculated to simulate 10 round magazines for neurocognitive training.
+        Emergency gnitive training.
         Type 3 malfunctions with mag drop or retention decisions.
         After action drill reminders and wisely placed tactical reloads.
         Printable target calculated to simulate a thoracic cavity at 3, 5, 7, 10 and 15 meters.
@@ -117,6 +117,7 @@
             border-radius: 5px;
         }
     </style>
+	<script type="text/javascript" src="cordova.js"></script>
 </head>
 <body>
     <header>
@@ -386,6 +387,9 @@
         switch (document.getElementById("play").innerHTML) {
         case "Agree":
             document.getElementById("play").innerHTML = "Pause";
+			if(window.plugins !== undefined){
+				window.plugins.insomnia.keepAwake();
+			}
             start();
             break;
         case "Play":
@@ -400,6 +404,9 @@
             console.log("bad case in play.onclick");
         }
     };
+	if(window.plugins !== undefined){
+		window.plugins.insomnia.allowSleepAgain();
+	}
 </script>
     <footer>
         Advertisements:
