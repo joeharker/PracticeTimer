@@ -56,10 +56,7 @@
             height: 75px;
             background-color: brown;
             color: white;
-            display: flex;              /*//ignore jslint*/
-            align-items: center;        /*//ignore jslint*/
-            justify-content: center;    /*//ignore jslint*/
-            flex-direction: column;     /*//ignore jslint*/
+            text-align: center;
         }
 
         td {
@@ -126,43 +123,50 @@
     <script type="text/javascript" src="js/admob_simple.js"></script>
 </head>
 <body>
-    <header>
-        Practice Timer
-    </header>
-    <div id="main">
-        <div id="instruction">
-            Download a dry practice target at <a target="_blank" href="http://www.007dev.com/Downloads/DryPracticeTarget.htm">007dev.com/Downloads</a>.<br/>
-            <br />
-            For all practice:<br/>
-            <table>
-                <tr><td>*&nbsp;</td><td>I have received proper training presenting a handgun from the holster.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will re-holster slowly and safely.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have set a goal including a short session.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will not practice to fatigue.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have control of my practice environment including distractions.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have established a proper mindset.</td></tr>
+<header>
+    Practice Timer
+</header>
+<div id="main">
+    <div id="instruction">
+        Download a dry practice target at <a target="_blank" href="http://www.007dev.com/Downloads/DryPracticeTarget.htm">007dev.com/Downloads</a>.<br/>
+        <br/>
+        For all practice:<br/>
+        <table>
+            <tr><td>*&nbsp;</td><td>I have received proper training presenting a handgun from the holster.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will re-holster slowly and safely.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have set a goal including a short session.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will not practice to fatigue.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have control of my practice environment including distractions.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have established a proper mindset.</td></tr>
 
-                <tr><td>*&nbsp;</td><td>I will treat all guns as loaded guns.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will never let the muzzle cover anything I am not willing to destroy.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will keep my finger off the trigger until my sights are on the target.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will be sure of my target and what is in line with and beyond it.</td></tr>
-            </table>
-            <br/>
-            For dry practice:<br/>
-            <table>
-                <tr><td>*&nbsp;</td><td>I have unloaded the weapon and myself.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have placed all ammunition in another room.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have placed an appropriate target on a surface capable of stopping a bullet.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have performed a chamber check and mag check.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have said out loud, "The weapon is unloaded. I am ready for dry practice."</td></tr>
-                <tr><td>*&nbsp;</td><td>When I am done, I will remove the target.</td></tr>
-                <tr><td>*&nbsp;</td><td>When I am done, I will Say out loud "The weapon is considered hot. Dry practice is over."</td></tr>
-                <tr><td>*&nbsp;</td><td>After I am done, I will not draw or take another shot. Dry practice is over!</td></tr>
-            </table>
-        </div>
-        <div id="progressBar"><button id="reset">Reset</button><div class="container"><div id="progress">&nbsp;</div></div></div>
-        <button id="play">Agree</button>
+            <tr><td>*&nbsp;</td><td>I will treat all guns as loaded guns.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will never let the muzzle cover anything I am not willing to destroy.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will keep my finger off the trigger until my sights are on the target.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will be sure of my target and what is in line with and beyond it.</td></tr>
+        </table>
+        <br/>
+        For dry practice:<br/>
+        <table>
+            <tr><td>*&nbsp;</td><td>I have unloaded the weapon and myself.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have placed all ammunition in another room.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have placed an appropriate target on a surface capable of stopping a bullet.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have performed a chamber check and mag check.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have said out loud, "The weapon is unloaded. I am ready for dry practice."</td></tr>
+            <tr><td>*&nbsp;</td><td>When I am done, I will remove the target.</td></tr>
+            <tr><td>*&nbsp;</td><td>When I am done, I will Say out loud "The weapon is considered hot. Dry practice is over."</td></tr>
+            <tr><td>*&nbsp;</td><td>After I am done, I will not draw or take another shot. Dry practice is over!</td></tr>
+        </table>
     </div>
+    <div id="progressBar"><button id="reset">Reset</button>
+        <div class="container">
+            <div id="progress">&nbsp;</div>
+        </div>
+    </div>
+    <button id="play">Agree</button>
+</div>
+<footer>
+    Advertisements:
+</footer>
 <script>
     'use strict';
 
@@ -414,18 +418,5 @@
 		window.plugins.insomnia.allowSleepAgain();
 	}
 </script>
-    <footer>
-        Advertisements:
-        <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <!--//ignore jslint-->
-<!-- moble
-<ins class="adsbygoogle"
-style="display: inline-block; width: 320px; height: 100px"
-data-ad-client="ca-pub-1438477418297657"
-data-ad-slot="2099154125"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
--->
-    </footer>
 </body>
 </html>
