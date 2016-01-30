@@ -1,4 +1,4 @@
-if(typeof AdMob !== "undefined"){
+
     var admobid = {};
     if (/(android)/i.test(navigator.userAgent)) {
         admobid = { // for Android
@@ -17,15 +17,18 @@ if(typeof AdMob !== "undefined"){
         };
     }
 
-    function initApp() {
-        if (AdMob) {
-            AdMob.createBanner({
-                adId: admobid.banner,
-                position: AdMob.AD_POSITION.BOTTOM_CENTER,
-                autoShow: true
-            });
+    if (typeof AdMob !== "undefined") {
+        function initApp() {
+            if (AdMob) {
+                AdMob.createBanner({
+                    adId: admobid.banner,
+                    position: AdMob.AD_POSITION.BOTTOM_CENTER,
+                    autoShow: true
+                });
+            }
         }
+    } else {
+        console.log('AdMob is undefined');
     }
 
     document.addEventListener('deviceready', initApp, false);
-}
