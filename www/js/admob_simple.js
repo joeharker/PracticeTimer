@@ -17,8 +17,9 @@
         };
     }
 
-    if (typeof AdMob !== "undefined") {
-        function initApp() {
+    
+    function initApp() {
+        if (typeof AdMob !== "undefined") {
             if (AdMob) {
                 AdMob.createBanner({
                     adId: admobid.banner,
@@ -26,9 +27,9 @@
                     autoShow: true
                 });
             }
+        } else {
+            console.log('AdMob is undefined');
         }
-    } else {
-        console.log('AdMob is undefined');
     }
 
     document.addEventListener('deviceready', initApp, false);
