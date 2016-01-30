@@ -41,7 +41,8 @@
   -->
 
   <gap:plugin name="nl.x-services.plugins.insomnia" />
-  <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io" />
+  <preference name="android-build-tool" value="gradle" />
+  <gap:plugin name="cordova-plugin-admobpro" source="npm" />
 
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
