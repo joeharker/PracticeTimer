@@ -4,10 +4,10 @@
   <author href="http://007dev.com" email="joeharker@007dev.com">Joe Harker</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
-  <preference name="orientation" value="default"/>
+  <preference name="orientation" value="portrait"/>
   <preference name="target-device" value="universal"/>
-  <preference name="fullscreen" value="true"/>
-  <preference name="webviewbounce" value="true"/>
+  <preference name="fullscreen" value="false"/>
+  <preference name="webviewbounce" value="false"/>
   <preference name="prerendered-icon" value="true"/>
   <preference name="stay-in-webview" value="false"/>
   <preference name="ios-statusbarstyle" value="black-opaque"/>
@@ -41,6 +41,7 @@
   -->
 
   <gap:plugin name="nl.x-services.plugins.insomnia" />
+  <gap:plugin name="cordova-plugin-admob" source="npm" />
 
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
