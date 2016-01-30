@@ -41,7 +41,7 @@
   -->
 
   <gap:plugin name="nl.x-services.plugins.insomnia" />
-  <gap:plugin name="cordova-plugin-admob" source="npm" />
+  <gap:plugin name="cordova-plugin-admob" />
 
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
