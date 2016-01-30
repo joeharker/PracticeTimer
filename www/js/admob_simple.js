@@ -24,7 +24,8 @@
                 AdMob.createBanner({
                     adId: admobid.banner,
                     position: AdMob.AD_POSITION.BOTTOM_CENTER,
-                    autoShow: true
+                    autoShow: true,
+                    bgColor: 'brown'
                 });
             }
         } else {
