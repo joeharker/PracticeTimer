@@ -9,11 +9,11 @@
     <!--
     <meta name="description" content="
 		Practice timer for live fire and dry practice handgun presenting from the holster.
-		20 standard drills each with 0 to 3 seconds random start times.
+		20 standard drills each with 0 to 2 second random start times.
 		8 emergency drills mixed in randomly.
-        Emergency gnitive training.
-        Type 3 malfunctions with mag drop or retention decisions.
         After action drill reminders and wisely placed tactical reloads.
+        Emergency reloads optimized for 3 10 round magazines and neurocognitive training.
+        Type 3 malfunctions with mag drop or retention decisions.
         Printable target calculated to simulate a thoracic cavity at 3, 5, 7, 10 and 15 meters.
         Safety instructions reminded on the target and before each app practice.
         Extra dry practice safety instructions.
@@ -175,8 +175,8 @@
         t = this,
         s = 0,
         buzTime = 0,
-        startBuz = new Audio("sound/buz.mp3"),
-        endBuz = new Audio("sound/buz.mp3"),
+        startBuz = new Audio("sound/buz.wav"),
+        endBuz = new Audio("sound/buz.wav"),
         player = new Audio();
 
     function newSchedule() {
@@ -371,7 +371,7 @@
 					document.getElementById("instruction").innerHTML = '<div class="stop big">&nbsp; STOP &nbsp;<\/Div>';
 					endBuz.play();
 				}, buzTime);
-            }, Math.floor(Math.random() * 3000));
+            }, Math.floor(Math.random() * 2000));
         } else {
             playNext();
         }
