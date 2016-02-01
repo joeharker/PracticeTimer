@@ -1,25 +1,25 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Practice Timer</title>
+    <title>Handgun Practice Timer</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="msapplication-tap-highlight" content="no" />
     <!--
     <meta name="description" content="
-		Practice timer for live fire and dry practice handgun presenting from the holster.
-		20 standard drills each with 0 to 3 seconds random start times.
-		8 emergency drills mixed in randomly.
-        Emergency gnitive training.
-        Type 3 malfunctions with mag drop or retention decisions.
-        After action drill reminders and wisely placed tactical reloads.
-        Printable target calculated to simulate a thoracic cavity at 3, 5, 7, 10 and 15 meters.
-        Safety instructions reminded on the target and before each app practice.
-        Extra dry practice safety instructions.
-        Both visual and audio queues.
-        Inspired by my training at Front Sight and the hand gun skill builder test.
-        Times adjusted for single press dry practice.
+Practice timer for live fire and dry practice handgun presenting from the holster.
+Inspired by my training at Front Sight, IDPA and USPSA competitions.
+20 standard drills each with 0 to 2 second random start times.
+8 emergency drills mixed in randomly.
+After action drill reminders and wisely placed tactical reloads.
+Emergency reloads optimized for 10 round magazines and neurocognitive training.
+Type 3 malfunctions with mag drop or retention decisions.
+Printable target calculated to simulate a thoracic cavity at 3, 5, 7, 10 and 15 meters.
+Safety instructions reminded on the target and before each app practice.
+Extra dry practice safety instructions.
+Both visual and audio queues.
+Times adjusted for single press practice.
 	">
     -->
     <!-- ReSharper disable All CssBrowserCompatibility -->
@@ -53,13 +53,10 @@
         }
 
         footer {
-            height: 125px;
+            height: 20px;
             background-color: brown;
             color: white;
-            display: flex;              /*//ignore jslint*/
-            align-items: center;        /*//ignore jslint*/
-            justify-content: center;    /*//ignore jslint*/
-            flex-direction: column;     /*//ignore jslint*/
+            text-align: center;
         }
 
         td {
@@ -117,51 +114,59 @@
             border-radius: 5px;
         }
 
-		::-webkit-scrollbar {width: 5px;}
-		::-webkit-scrollbar-track { border-radius: 10px;}
-		::-webkit-scrollbar-thumb { border-radius: 10px; background: rgb(169,169,169); }
-		::-webkit-scrollbar-thumb:window-inactive {background: rgb(128,128,128); }
+        ::-webkit-scrollbar {width: 5px;}                                                   /*android scroll bars //ignore jslint*/
+		::-webkit-scrollbar-track { border-radius: 10px;}                                   /*android scroll bars //ignore jslint*/
+		::-webkit-scrollbar-thumb { border-radius: 10px; background: rgb(169,169,169); }    /*android scroll bars //ignore jslint*/
+		::-webkit-scrollbar-thumb:window-inactive {background: rgb(128,128,128); }          /*android scroll bars //ignore jslint*/
     </style>
-	<script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/admob_simple.js"></script>
 </head>
 <body>
-    <header>
-        Practice Timer
-    </header>
-    <div id="main">
-        <div id="instruction">
-            Download a dry practice target at <a target="_blank" href="http://www.007dev.com/Downloads/DryPracticeTarget.htm">007dev.com/Downloads</a>.<br/>
-            <br />
-            For all practice:<br/>
-            <table>
-                <tr><td>*&nbsp;</td><td>I have received proper training presenting a handgun from the holster.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will re-holster slowly and safely.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have set a goal including a short session.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will not practice to fatigue.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have control of my practice environment including distractions.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have established a proper mindset.</td></tr>
+<header>
+    Practice Timer
+</header>
+<div id="main">
+    <div id="instruction">
+        Print a dry practice target at <a target="_blank" href="http://www.007dev.com/Downloads/DryPracticeTarget.htm">007dev.com/Downloads</a>.<br/>
+        <br/>
+        For all practice:<br/>
+        <table>
+            <tr><td>*&nbsp;</td><td>I have received proper training presenting a handgun from the holster.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will re-holster slowly and safely.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have set a goal including a short session.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will not practice to fatigue.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have control of my practice environment including distractions.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have established a proper mindset.</td></tr>
 
-                <tr><td>*&nbsp;</td><td>I will treat all guns as loaded guns.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will never let the muzzle cover anything I am not willing to destroy.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will keep my finger off the trigger until my sights are on the target.</td></tr>
-                <tr><td>*&nbsp;</td><td>I will be sure of my target and what is in line with and beyond it.</td></tr>
-            </table>
-            <br/>
-            For dry practice:<br/>
-            <table>
-                <tr><td>*&nbsp;</td><td>I have unloaded the weapon and myself.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have placed all ammunition in another room.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have placed an appropriate target on a surface capable of stopping a bullet.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have performed a chamber check and mag check.</td></tr>
-                <tr><td>*&nbsp;</td><td>I have said out loud, "The weapon is unloaded. I am ready for dry practice."</td></tr>
-                <tr><td>*&nbsp;</td><td>When I am done, I will remove the target.</td></tr>
-                <tr><td>*&nbsp;</td><td>When I am done, I will Say out loud "The weapon is considered hot. Dry practice is over."</td></tr>
-                <tr><td>*&nbsp;</td><td>After I am done, I will not draw or take another shot. Dry practice is over!</td></tr>
-            </table>
-        </div>
-        <div id="progressBar"><button id="reset">Reset</button><div class="container"><div id="progress">&nbsp;</div></div></div>
-        <button id="play">Agree</button>
+            <tr><td>*&nbsp;</td><td>I will treat all guns as loaded guns.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will never let the muzzle cover anything I am not willing to destroy.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will keep my finger off the trigger until my sights are on the target.</td></tr>
+            <tr><td>*&nbsp;</td><td>I will be sure of my target and what is in line with and beyond it.</td></tr>
+        </table>
+        <br/>
+        For dry practice:<br/>
+        <table>
+            <tr><td>*&nbsp;</td><td>I have unloaded the weapon and myself.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have placed all ammunition in another room.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have placed an appropriate target on a surface capable of stopping a bullet.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have performed a chamber check and mag check.</td></tr>
+            <tr><td>*&nbsp;</td><td>I have said out loud, "The weapon is unloaded. I am ready for dry practice."</td></tr>
+            <tr><td>*&nbsp;</td><td>When I am done, I will remove the target.</td></tr>
+            <tr><td>*&nbsp;</td><td>When I am done, I will Say out loud "The weapon is considered hot. Dry practice is over."</td></tr>
+            <tr><td>*&nbsp;</td><td>After I am done, I will not draw or take another shot. Dry practice is over!</td></tr>
+        </table>
     </div>
+    <div id="progressBar"><button id="reset">Reset</button>
+        <div class="container">
+            <div id="progress">&nbsp;</div>
+        </div>
+    </div>
+    <button id="play">Agree</button>
+</div>
+<footer>
+    Advertisements:
+</footer>
 <script>
     'use strict';
 
@@ -170,19 +175,20 @@
         t = this,
         s = 0,
         buzTime = 0,
-        startBuz = new Audio("test.wav"),
-        endBuz = new Audio("test.wav"),
+        startBuz = new Audio("sound/buz.wav"),
+        endBuz = new Audio("sound/buz.wav"),
         player = new Audio();
 
     function newSchedule() {
-        //schedule settigns
+        //schedule settings
         var drills = ["3", "3", "3", "5", "5", "5", "5", "7", "7", "7", "7", "10", "10", "10", "10", "15", "15", "15", "15"],
             tests = ["M1", "M1", "M2", "M2", "M3", "M3", "TR"], //only one tactical reload in this list will force at least one 10 round mag emergency reload
-            rounds = 10,
+            rounds = 9,
             //vars
             firstIndex = true,
             indexes = [],
             index,
+			mags = 0,
             x,
             d,
             i,
@@ -223,17 +229,19 @@
             }
         }
 
-        //add the repeditive things in this order [Emergencies, After action, Holster]
+        //add the repetitive things in this order [Emergencies, After action, Holster]
         for (d = 0; d < schedule.length; d += 1) {
             rounds -= 1;
 
             //add emergency reloads where they would happen naturally
             if (schedule[d] === "TR") {
                 rounds = 10;
-            } else if (rounds < 0) {
+				mags += 1;
+            } else if (rounds < 1) {
                 schedule.splice(d, 0, "ER");
                 rounds = 10;
                 d += 1;
+				mags += 1;
             }
 
             //add after action drills but not before malfunctions
@@ -247,13 +255,21 @@
                 schedule.splice(d, 0, "H");
                 d += 1;
             }
+
+            //add reload breaks
+            if (mags > 2) {
+                schedule.splice(d, 0, "RL");
+                d += 1;
+                mags = 0;
+            }
         }
 
-        //i like to ensure we start with a simple drill
+        //I like to ensure we start with a simple drill
         schedule.splice(0, 0, "3");
         //it is a good habit to end with a tactical reload and after action drills
         schedule.splice(schedule.length, 0, "TR");
         schedule.splice(schedule.length, 0, "A");
+		console.log(schedule);
     }
 
     function play() {
@@ -262,67 +278,73 @@
             emergency = '<div><span class="big">Emergency reload.<\/span><br \/><br \/>Ready...<\/div>',
             after = '<div>Perform<br /><span class="big">after action drills.<\/span><\/div>',
             holser = '<div><span class="big">Safely holster<\/span><br \/>your weapon.<\/div>',
+	    reload = '<div>If you are live fire practicing,<br />with your weapon holstered<br />wait until the range is clear<br />then retrieve and <span class="big">reload<\/span><br \/>your magazines.<\/div>',
             drill = '<div>Aiming for the<br \/><span class="big">{1} meter<\/span><br \/>target. From the holster.<br \/><br \/>Ready...<\/div>';
 
         switch (schedule[s]) {
         case "M1":
             document.getElementById("instruction").innerHTML = malfunction.replace("{1}", "1").replace("{2}", "Failure to fire.");
-            player.src = "test.wav";
+            player.src = "sound/t1.m4a";
             buzTime = 1400;
             break;
         case "M2":
             document.getElementById("instruction").innerHTML = malfunction.replace("{1}", "2").replace("{2}", "Failure to eject.");
-            player.src = "test.wav";
+            player.src = "sound/t2.m4a";
             buzTime = 1600;
             break;
         case "M3":
             document.getElementById("instruction").innerHTML = malfunction.replace("{1}", "3").replace("{2}", "Failure to extract.");
-            player.src = "test.wav";
+            player.src = "sound/t3.m4a";
             buzTime = 5700;
             break;
         case "TR":
             document.getElementById("instruction").innerHTML = tactical;
-            player.src = "test.wav";
+            player.src = "sound/tr.m4a";
             buzTime = 2500;
             break;
         case "ER":
             document.getElementById("instruction").innerHTML = emergency;
-            player.src = "test.wav";
+            player.src = "sound/er.m4a";
             buzTime = 2400;
             break;
         case "A":
             document.getElementById("instruction").innerHTML = after;
-            player.src = "test.wav";
+            player.src = "sound/after.m4a";
             buzTime = 0;
             break;
         case "H":
             document.getElementById("instruction").innerHTML = holser;
-            player.src = "test.wav";
+            player.src = "sound/holster.m4a";
+            buzTime = 0;
+            break;
+        case "RL":
+            document.getElementById("instruction").innerHTML = reload;
+            player.src = "sound/reload.m4a";
             buzTime = 0;
             break;
         case "3":
             document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "test.wav";
+            player.src = "sound/3m.m4a";
             buzTime = 1700;
             break;
         case "5":
             document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "test.wav";
+            player.src = "sound/5m.m4a";
             buzTime = 1900;
             break;
         case "7":
             document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "test.wav";
+            player.src = "sound/7m.m4a";
             buzTime = 2000;
             break;
         case "10":
             document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "test.wav";
+            player.src = "sound/10m.m4a";
             buzTime = 2500;
             break;
         case "15":
             document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "test.wav";
+            player.src = "sound/15m.m4a";
             buzTime = 2800;
             break;
         default:
@@ -330,6 +352,7 @@
         }
 
         if (document.getElementById("play").innerHTML === "Pause") {
+            player.onended = function () { playBuz(); };
             player.play();
         }
     }
@@ -350,7 +373,10 @@
         if (s < schedule.length) {
             play();
         } else {
-            document.location.reload();
+			document.getElementById("instruction").innerHTML = '<div><span class="big">Nice work!<\/span><br \/><br \/>Safely holster your weapon and remove your target.<br />Practice is over and your weapon is considered hot!<\/div>';
+			player.src = "sound/nice.m4a";
+			player.onended = function () { document.location.reload(); };
+            player.play();
         }
     }
 
@@ -366,7 +392,7 @@
 					document.getElementById("instruction").innerHTML = '<div class="stop big">&nbsp; STOP &nbsp;<\/Div>';
 					endBuz.play();
 				}, buzTime);
-            }, Math.floor(Math.random() * 3000));
+            }, Math.floor(Math.random() * 2000));
         } else {
             playNext();
         }
@@ -384,7 +410,6 @@
     }
 
     //events
-    player.onended = function () { playBuz(); };
     endBuz.onended = function () { playNext(); };
     document.getElementById("reset").onclick = function () { document.location.reload(); };
 
@@ -413,17 +438,5 @@
 		window.plugins.insomnia.allowSleepAgain();
 	}
 </script>
-    <footer>
-        Advertisements:
-        <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <!--//ignore jslint-->
-        <!-- moble -->
-        <ins class="adsbygoogle"
-             style="display: inline-block; width: 320px; height: 100px"
-             data-ad-client="ca-pub-1438477418297657"
-             data-ad-slot="2099154125"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </footer>
 </body>
 </html>
