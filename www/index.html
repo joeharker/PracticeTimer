@@ -8,7 +8,7 @@
 	<meta name="msapplication-tap-highlight" content="no" />
     <!--
     <meta name="description" content="
-Practice timer for live fire and dry practice handgun presenting from the holster.
+Practice drills for live fire and dry practice handgun presenting from the holster.
 Inspired by my training at Front Sight, IDPA and USPSA competitions.
 20 standard drills each with 0 to 2 second random start times.
 8 emergency drills mixed in randomly.
@@ -18,7 +18,7 @@ Type 3 malfunctions with mag drop or retention decisions.
 Printable target calculated to simulate a thoracic cavity at 3, 5, 7, 10 and 15 meters.
 Safety instructions reminded on the target and before each app practice.
 Extra dry practice safety instructions.
-Both visual and audio queues.
+Voice commands with visual and audio queues.
 Times adjusted for single press practice.
 	">
     -->
@@ -130,6 +130,7 @@ Times adjusted for single press practice.
     <div id="instruction">
         Print a dry practice target at <a target="_blank" href="http://www.007dev.com/Downloads/DryPracticeTarget.htm">007dev.com/Downloads</a>.<br/>
         <br/>
+        As a user using this app I promice...<br />
         For all practice:<br/>
         <table>
             <tr><td>*&nbsp;</td><td>I have received proper training presenting a handgun from the holster.</td></tr>
@@ -264,8 +265,9 @@ Times adjusted for single press practice.
             }
         }
 
-        //I like to ensure we start with a simple drill
+        //I like to ensure we start with instructions and a simple drill
         schedule.splice(0, 0, "3");
+        schedule.splice(0, 0, "In");
         //it is a good habit to end with a tactical reload and after action drills
         schedule.splice(schedule.length, 0, "TR");
         schedule.splice(schedule.length, 0, "A");
@@ -278,10 +280,16 @@ Times adjusted for single press practice.
             emergency = '<div><span class="big">Emergency reload.<\/span><br \/><br \/>Ready...<\/div>',
             after = '<div>Perform<br /><span class="big">after action drills.<\/span><\/div>',
             holser = '<div><span class="big">Safely holster<\/span><br \/>your weapon.<\/div>',
-	    reload = '<div>If you are live fire practicing,<br />with your weapon holstered<br />wait until the range is clear<br />then retrieve and <span class="big">reload<\/span><br \/>your magazines.<\/div>',
+	        reload = '<div>If you are live fire practicing,<br />with your weapon holstered<br />wait until the range is clear<br />then retrieve and <span class="big">reload<\/span><br \/>your magazines.<\/div>',
+            instructions = '<div>In a moment the app will begin calling out range commands.<br \/>Please adjust your volume as needed.<br \/>After each command a timer will sound indicating a start and stop tone.<br \/>The training goal is to complete the task before the stop tone.<br \/>Do not let the tones rush you and feel free to use the pause button.<\/div>',
             drill = '<div>Aiming for the<br \/><span class="big">{1} meter<\/span><br \/>target. From the holster.<br \/><br \/>Ready...<\/div>';
 
         switch (schedule[s]) {
+        case "In":
+            document.getElementById("instruction").innerHTML = instructions;
+            player.src = "sound/todo.m4a";
+            buzTime = 0;
+            break;
         case "M1":
             document.getElementById("instruction").innerHTML = malfunction.replace("{1}", "1").replace("{2}", "Failure to fire.");
             player.src = "sound/t1.m4a";
