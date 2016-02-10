@@ -40,9 +40,10 @@
   <gap:plugin name="org.apache.cordova.vibration"/>
   -->
 
-  <gap:plugin name="nl.x-services.plugins.insomnia" />
-  <preference name="android-build-tool" value="gradle" />
-  <gap:plugin name="cordova-plugin-admobpro" source="npm" />
+  <gap:plugin name="nl.x-services.plugins.insomnia" />                <!--stay awake-->
+  <preference name="android-build-tool" value="gradle" />             <!--stay awake-->
+  <gap:plugin name="cordova-plugin-admobpro" source="npm" />          <!--adds-->
+  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" />  <!--open in default browser-->
 
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
