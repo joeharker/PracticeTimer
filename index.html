@@ -135,9 +135,7 @@ Times adjusted for single press practice.
         Print a practice target at<br />
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="window.open('http://www.007dev.com/Downloads/DryPracticeTarget.htm', '_system');">007dev.com/Downloads</a><br/>
         <br />
-        And here are three great articles describing dry practice.<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="window.open('http://www.usconcealedcarry.com/the-value-of-dry-practice/', '_system');">The value of dry practice</a><br />
-        &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="window.open('http://www.wikihow.com/Get-Better-Using-Your-Pistol-(Handgun)', '_system');">Get Better Using Your Pistol</a><br/>
+        A great article describing dry practice.<br />
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="window.open('http://www.usacarry.com/guide-to-dry-practice/', '_system');">Guide to dry practice</a><br />
         <br/>
         <b>Please read and agree to the following terms of use and safety rules &#8628;</b><br/>
@@ -192,7 +190,7 @@ Times adjusted for single press practice.
 
     function newSchedule() {
         //schedule settings
-        var drills = ["3", "3", "3", "5", "5", "5", "5", "7", "7", "7", "7", "10", "10", "10", "10", "15", "15", "15", "15"],
+        var drills = ["15", "15", "15", "10", "10", "10", "10", "7", "7", "7", "7", "5", "5", "5", "5", "3", "3", "3", "3"],
             tests = ["M1", "M1", "M2", "M2", "M3", "M3", "TR"], //only one tactical reload in this list will force at least one 10 round mag emergency reload
             rounds = 9,
             //vars
@@ -276,8 +274,9 @@ Times adjusted for single press practice.
         }
 
         //I like to ensure we start with instructions and a simple drill
-        schedule.splice(0, 0, "3");
+        schedule.splice(0, 0, "15");
         schedule.splice(0, 0, "In");
+
         //it is a good habit to end with a tactical reload and after action drills
         schedule.splice(schedule.length, 0, "TR");
         schedule.splice(schedule.length, 0, "A");
