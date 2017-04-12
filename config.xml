@@ -1,93 +1,123 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.Joe007dev.PracticeTimer" version="1.0.1">
+﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
+		id="com.Joe007dev.PracticeTimer"
+		version="2.0.0"
+		android-versionCode="20000">
+  <!--id="your.bundle.identifier" -->
+  <!--sku=a number you keep track of for each app=0001 -->
+
   <name>Practice Timer</name>
-  <description>Practice drills for live fire and dry practice handgun presenting from the holster.</description>
+  <description>Practice drills for live and dry practice handgun, presenting from the holster.</description>
   <author href="http://007dev.com" email="joeharker@007dev.com">Joe Harker</author>
+	
   <content src="index.html"/>
-  <preference name="permissions" value="none"/>
-  <preference name="orientation" value="portrait"/>
-  <preference name="target-device" value="universal"/>
-  <preference name="fullscreen" value="false"/>
-  <preference name="webviewbounce" value="false"/>
-  <preference name="prerendered-icon" value="true"/>
-  <preference name="stay-in-webview" value="false"/>
-  <preference name="ios-statusbarstyle" value="black-opaque"/>
-  <preference name="detect-data-types" value="true"/>
-  <preference name="exit-on-suspend" value="false"/>
-  <preference name="show-splash-screen-spinner" value="true"/>
-  <preference name="auto-hide-splash-screen" value="true"/>
-  <preference name="disable-cursor" value="false"/>
-  <preference name="android-minSdkVersion" value="14"/>
-  <preference name="android-installLocation" value="auto"/>
-  
-  <!--
-  <gap:plugin name="org.apache.cordova.battery-status"/>
-  <gap:plugin name="org.apache.cordova.camera"/>
-  <gap:plugin name="org.apache.cordova.media-capture"/>
-  <gap:plugin name="org.apache.cordova.console"/>
-  <gap:plugin name="org.apache.cordova.contacts"/>
-  <gap:plugin name="org.apache.cordova.device"/>
-  <gap:plugin name="org.apache.cordova.device-motion"/>
-  <gap:plugin name="org.apache.cordova.device-orientation"/>
-  <gap:plugin name="org.apache.cordova.dialogs"/>
-  <gap:plugin name="org.apache.cordova.file"/>
-  <gap:plugin name="org.apache.cordova.file-transfer"/>
-  <gap:plugin name="org.apache.cordova.geolocation"/>
-  <gap:plugin name="org.apache.cordova.globalization"/>
-  <gap:plugin name="org.apache.cordova.inappbrowser"/>
-  <gap:plugin name="org.apache.cordova.media"/>
-  <gap:plugin name="org.apache.cordova.network-information"/>
-  <gap:plugin name="org.apache.cordova.splashscreen"/>
-  <gap:plugin name="org.apache.cordova.vibration"/>
+
+	<preference name="permissions" value="none" />
+	<preference name="orientation" value="portrait" />
+	<preference name="target-device" value="universal" />
+	<preference name="fullscreen" value="false" />
+	<preference name="webviewbounce" value="false" />
+	<preference name="stay-in-webview" value="false" />
+	<preference name="ios-statusbarstyle" value="black-opaque" />
+	<preference name="detect-data-types" value="true" />
+	<preference name="exit-on-suspend" value="false" />
+	<preference name="disable-cursor" value="false" />
+	<preference name="android-minSdkVersion" value="14" />
+	<preference name="android-installLocation" value="auto" />
+	<preference name="SplashScreenDelay" value="0" />
+	<preference name="show-splash-screen-spinner" value="false" />
+
+	<!--
+		<plugin name="cordova-plugin-battery-status" />
+		<plugin name="cordova-plugin-statusbar" />
+    <plugin name="cordova-plugin-camera" />
+    <plugin name="cordova-plugin-media-capture" />
+    <plugin name="cordova-plugin-console" />
+    <plugin name="cordova-plugin-contacts" />
+    <plugin name="cordova-plugin-device" />
+    <plugin name="cordova-plugin-device-motion" />
+    <plugin name="cordova-plugin-device-orientation" />
+    <plugin name="cordova-plugin-dialogs" />
+    <plugin name="cordova-plugin-file" />
+    <plugin name="cordova-plugin-file-transfer" />
+    <plugin name="cordova-plugin-geolocation" />
+    <plugin name="cordova-plugin-globalization" />
+    <plugin name="cordova-plugin-inappbrowser" />
+    <plugin name="cordova-plugin-media" />
+    <plugin name="cordova-plugin-network-information" />
+    <plugin name="cordova-plugin-splashscreen" />
+    <plugin name="cordova-plugin-vibration" />
+		<plugin name="cordova-plugin-whitelist" />
   -->
+	<!--stay awake-->
+	<gap:plugin name="nl.x-services.plugins.insomnia" source="pgb" />
+  <preference name="android-build-tool" value="gradle" />
 
-  <gap:plugin name="nl.x-services.plugins.insomnia" source="pgb" />   <!--stay awake-->
-  <preference name="android-build-tool" value="gradle" />             <!--adds-->
-  <gap:plugin name="cordova-plugin-admobpro" source="npm" />          <!--adds-->
-  <gap:plugin name="org.apache.cordova.inappbrowser" source="pgb" />  <!--open in default browser-->
-  <gap:plugin name="org.apache.cordova.splashscreen" source="pgb" />  <!--splashscreen-->
+	<icon src="icon.png" />
+	<splash src="splash.png" />
+	<platform name="ios">
+		<icon src="res/icons/ios/icon-small.png" width="29" height="29"/>
+		<icon src="res/icons/ios/icon-small-2x.png" width="58" height="58"/>
+		<icon src="res/icons/ios/icon-40.png" width="40" height="40"/>
+		<icon src="res/icons/ios/icon-40-2x.png" width="80" height="80"/>
+		<icon src="res/icons/ios/icon-50.png" width="50" height="50"/>
+		<icon src="res/icons/ios/icon-50-2x.png" width="100" height="100"/>
+		<icon src="res/icons/ios/icon.png" width="57" height="57"/>
+		<icon src="res/icons/ios/icon-2x.png" width="114" height="114"/>
+		<icon src="res/icons/ios/icon-60.png" width="60" height="60"/>
+		<icon src="res/icons/ios/icon-60-2x.png" width="120" height="120"/>
+		<icon src="res/icons/ios/icon-60-3x.png" width="180" height="180"/>
+		<icon src="res/icons/ios/icon-72.png" width="72" height="72"/>
+		<icon src="res/icons/ios/icon-72-2x.png" width="144" height="144"/>
+		<icon src="res/icons/ios/icon-76.png" width="76" height="76"/>
+		<icon src="res/icons/ios/icon-76-2x.png" width="152" height="152"/>
+		<splash src="res/screens/ios/screen-iphone-portrait.png" width="320" height="480"/>
+		<splash src="res/screens/ios/screen-iphone-portrait-2x.png" width="640" height="960"/>
+		<splash src="res/screens/ios/screen-iphone-portrait-568h-2x.png" width="640" height="1136"/>
+		<splash src="res/screens/ios/screen-iphone-portrait-667h.png" width="750" height="1334"/>
+		<splash src="res/screens/ios/screen-iphone-portrait-736h.png" width="1242" height="2208"/>
+		<splash src="res/screens/ios/screen-ipad-portrait.png" width="768" height="1024"/>
+		<splash src="res/screens/ios/screen-ipad-portrait-2x.png" width="1536" height="2048"/>
+		<!-- not from http://pgicons.abiro.com -->
+		<icon src="res/icons/ios/icon-small@3x.png" width="87" height="87" />
+		<icon src="res/icons/ios/icon-83.5@2x.png" width="167" height="167" />
+		<splash src="res/screens/ios/screen-iphone-portrait-6plus.png" width="1920" height="1080" />
+		<splash src="res/screens/ios/screen-Default-portrait-667h.png" width="1334" height="750" />
+		<splash src="res/screens/ios/screen-iphone-land.png" width="480" height="320"/>
+		<splash src="res/screens/ios/screen-iphone-land-2x.png" width="960" height="640"/>
+		<splash src="res/screens/ios/screen-iphone-land-568h-2x.png" width="1136" height="640"/>
+		<splash src="res/screens/ios/screen-iphone-land-667h.png" width="1334" height="750"/>
+		<splash src="res/screens/ios/screen-iphone-land-736h.png" width="2208" height="1242"/>
+		<splash src="res/screens/ios/screen-ipad-land.png" width="1024" height="768"/>
+		<splash src="res/screens/ios/screen-ipad-land-2x.png" width="2048" height="1536"/>
+		<splash src="res/screens/ios/screen-iphone-land-6plus.png" width="1920" height="1080" />
+		<splash src="res/screens/ios/screen-Default-land-667h.png" width="1334" height="750" />
+	</platform>
+	<platform name="android">
+		<icon qualifier="ldpi" src="res/icons/android/icon-36-ldpi.png"/>
+		<icon qualifier="mdpi" src="res/icons/android/icon-48-mdpi.png"/>
+		<icon qualifier="hdpi" src="res/icons/android/icon-72-hdpi.png"/>
+		<icon qualifier="xhdpi" src="res/icons/android/icon-96-xhdpi.png"/>
+		<icon qualifier="xxhdpi" src="res/icons/android/icon-144-xxhdpi.png"/>
+		<icon qualifier="xxxhdpi" src="res/icons/android/icon-192-xxxhdpi.png"/>
+		<splash qualifier="ldpi" src="res/screens/android/screen-ldpi-portrait.png"/>
+		<splash qualifier="mdpi" src="res/screens/android/screen-mdpi-portrait.png"/>
+		<splash qualifier="hdpi" src="res/screens/android/screen-hdpi-portrait.png"/>
+		<splash qualifier="xhdpi" src="res/screens/android/screen-xhdpi-portrait.png"/>
+	</platform>
 
-  <icon src="icon.png"/>
-  <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
-  <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
-  <icon src="res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:qualifier="hdpi"/>
-  <icon src="res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi"/>
-  <icon src="res/icon/blackberry/icon-80.png" gap:platform="blackberry"/>
-  <icon src="res/icon/blackberry/icon-80.png" gap:platform="blackberry" gap:state="hover"/>
-  <icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57"/>
-  <icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72"/>
-  <icon src="res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114"/>
-  <icon src="res/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144"/>
-  <icon src="res/icon/ios/icon-120.png" gap:platform="ios" width="120" height="120"/>
-  <icon src="res/icon/ios/icon-76.png" gap:platform="ios" width="76" height="76"/>
-  <icon src="res/icon/ios/icon-152.png" gap:platform="ios" width="152" height="152"/>
-  
-  <icon src="res/icon/webos/icon-64.png" gap:platform="webos"/>
-  <icon src="res/icon/windows-phone/icon-48.png" gap:platform="winphone"/>
-  <icon src="res/icon/windows-phone/icon-173-tile.png" gap:platform="winphone" gap:role="background"/>
-  <gap:splash src="res/screen/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi"/>
-  <gap:splash src="res/screen/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi"/>
-  <gap:splash src="res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi"/>
-  <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi"/>
-  <gap:splash src="res/screen/blackberry/screen-225.png" gap:platform="blackberry"/>
-  <gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480"/>
-  <gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios" width="640" height="960"/>
-  <gap:splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios" width="640" height="1136"/>
-  <gap:splash src="res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1024"/>
-  <gap:splash src="res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
-  <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
-  <access origin="*"/>
-  <plugin name="cordova-plugin-whitelist" version="1"/>
-  <allow-intent href="http://*/*"/>
-  <allow-intent href="https://*/*"/>
-  <allow-intent href="tel:*"/>
-  <allow-intent href="sms:*"/>
-  <allow-intent href="mailto:*"/>
-  <allow-intent href="geo:*"/>
-  <platform name="android">
-    <allow-intent href="market:*"/>
-  </platform>
-  <platform name="ios">
-    <allow-intent href="itms:*"/>
-    <allow-intent href="itms-apps:*"/>
-  </platform>
+	<access origin="*" />
+	<allow-navigation href="*" />
+	<allow-intent href="*" />
+	<allow-intent href="tel:*" />
+	<allow-intent href="sms:*" />
+	<allow-intent href="mailto:*" />
+	<allow-intent href="geo:*" />
+	<allow-intent href="maps:*" />
+	<platform name="android">
+		<allow-intent href="market:*" />
+	</platform>
+	<platform name="ios">
+		<allow-intent href="itms:*" />
+		<allow-intent href="itms-apps:*" />
+	</platform>
 </widget>

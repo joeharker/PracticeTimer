@@ -3,17 +3,17 @@
 <head>
     <title>Handgun Practice Timer</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="msapplication-tap-highlight" content="no" />
-    <!--
-    <meta name="description" content="
+	<meta http-equiv="Cache-control" content="public" max-age="86400" />
+	<meta name="description" content="
 Practice drills for live fire and dry practice handgun presenting from the holster.
 Inspired by my training at Front Sight, IDPA and USPSA competitions.
-20 standard drills each with 0 to 2 second random start times.
-8 emergency drills mixed in randomly.
-After action drill reminders and wisely placed tactical reloads.
-Emergency reloads optimized for 10 round magazines and neurocognitive training.
+Standard drills each with 0 to 2 second random start times.
+Emergency drills mixed in randomly.
+After action drill reminders and tactical reloads.
+Emergency reloads optimized for neurocognitive training.
 Type 3 malfunctions with mag drop or retention decisions.
 Printable target calculated to simulate a thoracic cavity at 3, 5, 7, 10 and 15 meters.
 Safety instructions reminded on the target and before each app practice.
@@ -21,439 +21,102 @@ Extra dry practice safety instructions.
 Voice commands with visual and audio queues.
 Times adjusted for single press practice.
 	">
-    -->
-    <!-- ReSharper disable All CssBrowserCompatibility -->
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
-            display: flex;              /*fixed footer //ignore jslint*/
-            min-height: 100vh;          /*fixed footer //ignore jslint*/
-            flex-direction: column;     /*fixed footer //ignore jslint*/
-        }
+	<style>
+		/*reset*/
+		html, body {
+			padding: 0;
+			margin: 0;
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-        #main {
-            flex: 10 0 auto;            /*fixed footer //ignore jslint*/
-            display: flex;              /*//ignore jslint*/
-            flex-direction: column;     /*//ignore jslint*/
-            align-items: center;        /*//ignore jslint*/
-            justify-content: center;    /*//ignore jslint*/
-        }
+			/*safari tool bar*/
+			overflow-y: auto;
+			height: 100%;
+			-webkit-overflow-scrolling: touch;
+		}
 
-        header {
-            height: 75px;
-            background-color: brown;
-            color: white;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-weight: bold;
-            font-size: 30px;
-            display: flex;              /*//ignore jslint*/
-            align-items: center;        /*//ignore jslint*/
-            justify-content: center;    /*//ignore jslint*/
-        }
+		/* layout */
+		.index-header {
+			/*sticky*/
+			position: fixed;
+			width: 100%;
+			top: 0;
+			height: 50px; /* head height */
 
-        footer {
-            height: 20px;
-            background-color: brown;
-            color: white;
-            text-align: center;
-        }
+			/*style*/
+			font-weight: bold;
+			font-size: 30px;
+			height: 50px;
+		}
 
-        td {
-            vertical-align: top;
-        }
+		.index-torso {
+			/*sticky*/
+			position: absolute;
+			top: 50px; /* head height */
+			bottom: 40px; /* foot height */
+			width: 100%; /* can use left: 0; right: 0; as well */
+			overflow-y: auto;
+		}
 
-        #instruction {
-            flex: 50 0 auto;            /*//ignore jslint*/
-            overflow: auto;
-            height: 0;
-            margin: 5px 0 5px 5px;
-            padding: 0;
-        }
+		.index-footer {
+			/*sticky*/
+			position: fixed;
+			width: 100%;
+			bottom: 0;
+			height: 40px; /* foot height */
 
-        #progressBar {
-            width: 90%;
-            background-color: silver;
-            display: none;
-        }
+			/*style*/
+			text-align: center;
+			vertical-align: bottom;
+		}
 
-        #progress {
-            width: 0;
-            background-color: green;
-            color: white;
-            margin: 2px;
-            display: flex;              /*//ignore jslint*/
-            align-items: center;        /*//ignore jslint*/
-            justify-content: center;    /*//ignore jslint*/
-        }
+		.inline {
+			display: inline-block;
+		}
 
-        #play {
-            width: 90%;
-            height: 100px;
-            margin: 5px;
-            font-weight: bold;
-        }
+		#amount {
+			width: 50px;
+			margin-top: 6px;
+		}
 
-        #reset {
-            width: 60px;
-        }
-
-        .container {
-            width: 100%;
-        }
-
-        .big {
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .go {
-            background-color: lime;
-            border-radius: 5px;
-        }
-
-        .stop {
-            background-color: red;
-            color: white;
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar {width: 5px;}                                                   /*android scroll bars //ignore jslint*/
-		::-webkit-scrollbar-track { border-radius: 10px;}                                   /*android scroll bars //ignore jslint*/
-		::-webkit-scrollbar-thumb { border-radius: 10px; background: rgb(169,169,169); }    /*android scroll bars //ignore jslint*/
-		::-webkit-scrollbar-thumb:window-inactive {background: rgb(128,128,128); }          /*android scroll bars //ignore jslint*/
-    </style>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/admob_simple.js"></script>
+		#stripe {
+			display: inline-block;
+			width: 75px;
+			height: 32px;
+			border-radius: 5px;
+			background-color: dodgerblue;
+		}
+	</style>
+	<link rel="icon" href="favicon.ico">
+	<link href="css/project.css" rel="stylesheet"/>
+	<link href="css/common.css" rel="stylesheet"/>
+	<script src="services/logService.js"></script>
+	<script>logService.init(true);</script>
+	<script src="js/pages.js"></script>
+	<script src="services/donateService.js"></script>
 </head>
 <body>
-<header>
-    Practice Timer
-</header>
-<div id="main">
-    <div id="instruction">
-        Print a practice target at<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="window.open('http://www.007dev.com/Downloads/DryPracticeTarget.htm', '_system');">007dev.com/Downloads</a><br/>
-        <br />
-        A great article describing dry practice.<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="window.open('http://www.usacarry.com/guide-to-dry-practice/', '_system');">Guide to dry practice</a><br />
-        <br/>
-        <b>Please read and agree to the following terms of use and safety rules &#8628;</b><br/>
-        For all practice:<br/>
-        <table>
-            <tr><td>*&nbsp;</td><td>I have received proper training presenting a handgun from the holster.</td></tr>
-            <tr><td>*&nbsp;</td><td>I will re-holster slowly and safely.</td></tr>
-            <tr><td>*&nbsp;</td><td>I have set a goal including a short session.</td></tr>
-            <tr><td>*&nbsp;</td><td>I will not practice to fatigue.</td></tr>
-            <tr><td>*&nbsp;</td><td>I have control of my practice environment including distractions.</td></tr>
-            <tr><td>*&nbsp;</td><td>I have established a proper mindset.</td></tr>
-
-            <tr><td>*&nbsp;</td><td>I will treat all guns as loaded guns.</td></tr>
-            <tr><td>*&nbsp;</td><td>I will never let the muzzle cover anything I am not willing to destroy.</td></tr>
-            <tr><td>*&nbsp;</td><td>I will keep my finger off the trigger until my sights are on the target.</td></tr>
-            <tr><td>*&nbsp;</td><td>I will be sure of my target and what is in line with and beyond it.</td></tr>
-        </table>
-        <br/>
-        For dry practice:<br/>
-        <table>
-            <tr><td>*&nbsp;</td><td>I have unloaded the weapon and myself.</td></tr>
-            <tr><td>*&nbsp;</td><td>I have placed all ammunition in another room.</td></tr>
-            <tr><td>*&nbsp;</td><td>I have placed an appropriate target on a surface capable of stopping a bullet.</td></tr>
-            <tr><td>*&nbsp;</td><td>I have performed a chamber check and mag check.</td></tr>
-            <tr><td>*&nbsp;</td><td>I have said out loud, "The weapon is unloaded. I am ready for dry practice."</td></tr>
-            <tr><td>*&nbsp;</td><td>When I am done, I will remove the target.</td></tr>
-            <tr><td>*&nbsp;</td><td>When I am done, I will Say out loud "The weapon is considered hot. Dry practice is over."</td></tr>
-            <tr><td>*&nbsp;</td><td>After I am done, I will not draw or take another shot. Dry practice is over!</td></tr>
-        </table>
-    </div>
-    <div id="progressBar"><button id="reset">Reset</button>
-        <div class="container">
-            <div id="progress">&nbsp;</div>
-        </div>
-    </div>
-    <button id="play">Agree</button>
-</div>
-<footer>
-    Advertisements:
-</footer>
-<script>
-    'use strict';
-
-    //global settings
-    var schedule = [],
-        t = this,
-        s = 0,
-        buzTime = 0,
-        startBuz = new Audio("sound/buz.wav"),
-        endBuz = new Audio("sound/buz.wav"),
-        player = new Audio();
-
-    function newSchedule() {
-        //schedule settings
-        var drills = ["15", "15", "15", "10", "10", "10", "10", "7", "7", "7", "7", "5", "5", "5", "5", "3", "3", "3", "3"],
-            tests = ["M1", "M1", "M2", "M2", "M3", "M3", "TR"], //only one tactical reload in this list will force at least one 10 round mag emergency reload
-            rounds = 9,
-            //vars
-            firstIndex = true,
-            indexes = [],
-            index,
-			mags = 0,
-            x,
-            d,
-            i,
-            t;
-
-        //add each test to the schedule randomly
-        schedule = drills.slice();
-        s = 0;
-        if (tests.lenght > (schedule.length - 2) / 2) {
-            console.log("Not enugh schedule to prevent back to back tests");
-        } else {
-            for (d = 0; d < schedule.length; d += 1) {
-                indexes.push(d);
-            }
-            for (t = 0; t < tests.length; t += 1) {
-                firstIndex = true;
-
-                //prevent a tactical reload from happening right after an emergency reload
-                while (firstIndex || (index === 10 && tests[t] === "TR")) {
-                    firstIndex = false;
-                    x = Math.floor(Math.random() * indexes.length);
-                    index = indexes[x];
-                }
-                schedule.splice(index, 0, tests[t]);
-
-                //prevent back to back tests
-                for (i = x; i < indexes.length; i += 1) {
-                    indexes[i] += 1; //the insert increases the rest of the array, also effectively removing the index
-                }
-                x = indexes.indexOf(index - 1); //remove the index before it
-                if (x !== -1) {
-                    indexes.splice(x, 1);
-                }
-                x = indexes.indexOf(index + 1); //remove the index after it
-                if (x !== -1) {
-                    indexes.splice(x, 1);
-                }
-            }
-        }
-
-        //add the repetitive things in this order [Emergencies, After action, Holster]
-        for (d = 0; d < schedule.length; d += 1) {
-            rounds -= 1;
-
-            //add emergency reloads where they would happen naturally
-            if (schedule[d] === "TR") {
-                rounds = 10;
-				mags += 1;
-            } else if (rounds < 1) {
-                schedule.splice(d, 0, "ER");
-                rounds = 10;
-                d += 1;
-				mags += 1;
-            }
-
-            //add after action drills but not before malfunctions
-            if (drills.indexOf(schedule[d]) !== -1 || schedule[d] === "TR") {
-                schedule.splice(d, 0, "A");
-                d += 1;
-            }
-
-            //add holster requests before each drill
-            if (drills.indexOf(schedule[d]) !== -1) {
-                schedule.splice(d, 0, "H");
-                d += 1;
-            }
-
-            //add reload breaks
-            if (mags > 2) {
-                schedule.splice(d, 0, "RL");
-                d += 1;
-                mags = 0;
-            }
-        }
-
-        //I like to ensure we start with instructions and a simple drill
-        schedule.splice(0, 0, "15");
-        schedule.splice(0, 0, "In");
-
-        //it is a good habit to end with a tactical reload and after action drills
-        schedule.splice(schedule.length, 0, "TR");
-        schedule.splice(schedule.length, 0, "A");
-		//console.log(schedule);
-    }
-
-    function play() {
-        var malfunction = '<div><span class="big">Type {1} malfunction.<\/span><br \/>{2}<br \/><br \/>Ready...<\/div>',
-            tactical = '<div><span class="big">Tactical reload.<\/span><br \/><br \/>Ready...<\/div>',
-            emergency = '<div><span class="big">Emergency reload.<\/span><br \/><br \/>Ready...<\/div>',
-            after = '<div>Perform<br /><span class="big">after action drills.<\/span><\/div>',
-            holser = '<div><span class="big">Safely holster<\/span><br \/>your weapon.<\/div>',
-	        reload = '<div>If you are live fire practicing,<br />with your weapon holstered<br />wait until the range is clear<br />then retrieve and <span class="big">reload<\/span><br \/>your magazines.<\/div>',
-            instructions = '<div>In a moment the app will begin calling out range commands.<br \/>Please adjust your volume as needed.<br \/>After each command a timer will sound indicating a start and stop tone.<br \/>The training goal is to complete the task before the stop tone.<br \/>Do not let the tones rush you and feel free to use the pause button.<\/div>',
-            drill = '<div>Aiming for the<br \/><span class="big">{1} meter<\/span><br \/>target. From the holster.<br \/><br \/>Ready...<\/div>';
-
-        switch (schedule[s]) {
-        case "In":
-            document.getElementById("instruction").innerHTML = instructions;
-            player.src = "sound/instructions.m4a";
-            buzTime = 0;
-            break;
-        case "M1":
-            document.getElementById("instruction").innerHTML = malfunction.replace("{1}", "1").replace("{2}", "Failure to fire.");
-            player.src = "sound/t1.m4a";
-            buzTime = 1400;
-            break;
-        case "M2":
-            document.getElementById("instruction").innerHTML = malfunction.replace("{1}", "2").replace("{2}", "Failure to eject.");
-            player.src = "sound/t2.m4a";
-            buzTime = 1600;
-            break;
-        case "M3":
-            document.getElementById("instruction").innerHTML = malfunction.replace("{1}", "3").replace("{2}", "Failure to extract.");
-            player.src = "sound/t3.m4a";
-            buzTime = 5700;
-            break;
-        case "TR":
-            document.getElementById("instruction").innerHTML = tactical;
-            player.src = "sound/tr.m4a";
-            buzTime = 2500;
-            break;
-        case "ER":
-            document.getElementById("instruction").innerHTML = emergency;
-            player.src = "sound/er.m4a";
-            buzTime = 2400;
-            break;
-        case "A":
-            document.getElementById("instruction").innerHTML = after;
-            player.src = "sound/after.m4a";
-            buzTime = 0;
-            break;
-        case "H":
-            document.getElementById("instruction").innerHTML = holser;
-            player.src = "sound/holster.m4a";
-            buzTime = 0;
-            break;
-        case "RL":
-            document.getElementById("instruction").innerHTML = reload;
-            player.src = "sound/reload.m4a";
-            buzTime = 0;
-            break;
-        case "3":
-            document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "sound/3m.m4a";
-            buzTime = 1700;
-            break;
-        case "5":
-            document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "sound/5m.m4a";
-            buzTime = 1900;
-            break;
-        case "7":
-            document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "sound/7m.m4a";
-            buzTime = 2000;
-            break;
-        case "10":
-            document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "sound/10m.m4a";
-            buzTime = 2500;
-            break;
-        case "15":
-            document.getElementById("instruction").innerHTML = drill.replace("{1}", schedule[s]);
-            player.src = "sound/15m.m4a";
-            buzTime = 2800;
-            break;
-        default:
-            console.log("bad case in play");
-        }
-
-        if (document.getElementById("play").innerHTML === "Pause") {
-            player.onended = function () { playBuz(); };
-            player.play();
-        }
-    }
-
-    function playNext() {
-        var percent = (s / schedule.length * 100).toFixed(0);
-        s += 1;
-
-        document.getElementById("play").disabled = false;
-        document.getElementById("progress").style.width = percent + "%";
-
-        if (percent > 10) {
-            document.getElementById("progress").innerHTML = percent + "%";
-        } else {
-            document.getElementById("progress").innerHTML = "&nbsp;";
-        }
-
-        if (s < schedule.length) {
-            play();
-        } else {
-			document.getElementById("instruction").innerHTML = '<div><span class="big">Nice work!<\/span><br \/><br \/>Safely holster your weapon and remove your target.<br />Practice is over and your weapon is considered hot!<\/div>';
-			player.src = "sound/nice.m4a";
-			player.onended = function () { document.location.reload(); };
-            player.play();
-        }
-    }
-
-    function playBuz() {
-        if (buzTime > 0) {
-            document.getElementById("play").disabled = true;
-
-            setTimeout(function () {
-				document.getElementById("instruction").innerHTML = '<div class="go big">&nbsp; &nbsp; GO &nbsp; &nbsp;<\/Div>';
-				startBuz.play();
-
-				setTimeout(function () {
-					document.getElementById("instruction").innerHTML = '<div class="stop big">&nbsp; STOP &nbsp;<\/Div>';
-					endBuz.play();
-				}, buzTime);
-            }, Math.floor(Math.random() * 2000));
-        } else {
-            playNext();
-        }
-    }
-
-    function start() {
-        document.getElementById("progressBar").style.display = "flex";
-        document.getElementById("instruction").style.display = "flex";
-        document.getElementById("instruction").style["align-items"] = "center";
-        document.getElementById("instruction").style["justify-content"] = "center";
-        document.getElementById("instruction").style.overflow = "hidden";
-
-        newSchedule();
-        play();
-    }
-
-    //events
-    endBuz.onended = function () { playNext(); };
-    document.getElementById("reset").onclick = function () { document.location.reload(); };
-
-    document.getElementById("play").onclick = function () {
-        switch (document.getElementById("play").innerHTML) {
-        case "Agree":
-            document.getElementById("play").innerHTML = "Pause";
-			if(window.plugins !== undefined){
-				window.plugins.insomnia.keepAwake();
-			}
-            start();
-            break;
-        case "Play":
-            document.getElementById("play").innerHTML = "Pause";
-            player.play();
-            break;
-        case "Pause":
-            document.getElementById("play").innerHTML = "Play";
-            player.pause();
-            break;
-        default:
-            console.log("bad case in play.onclick");
-        }
-    };
-	if(window.plugins !== undefined){
-		window.plugins.insomnia.allowSleepAgain();
-	}
-</script>
+	<header class="index-header hot flex-row">
+		<a class="button home-button hot flex-item-start js-page-instructions" href="#">&#9750;</a>
+		<span class="flex-item-center flex-item-full center-t">Practice Timer</span>
+		<a class="button settings-button hot flex-item-end js-page-settings" href="#pages/settings/settings.htm">&#9881;</a>
+	</header>
+	<div class="index-torso">
+		<div id="pages/instructions/instructions.htm" class="js-page">
+			<noscript>This app requires javascript</noscript>
+		</div>
+		<div id="cordova.js" class="js-page"></div>
+		<div id="pages/timer/timer.htm" class="js-page"></div>
+		<div id="pages/resources/resources.htm" class="js-page"></div>
+		<div id="pages/settings/settings.htm" class="js-page"></div>
+		<div id="pages/settings/setting.htm" class="js-page"></div>
+	</div>
+	<footer class="index-footer">
+		<span id="stripe"><script>donateService.setDonation('stripe', 1.00);</script></span>
+		<span class="inline">
+			$<input id="amount" type="number" min="0" value="1" oninput="donateService.setDonation('stripe', this.value);" />
+			to the App
+		</span>
+	</footer>
 </body>
 </html>

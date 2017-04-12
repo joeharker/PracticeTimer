@@ -1,0 +1,28 @@
+<div class="timmer-header">
+	<div id="timmer-idea" class="center-t"></div>
+</div>
+<div class="timmer-torso">
+	<div id="timmer-spinner" class="spinner stop-spinner">
+		<div class="pointer">|</div>
+	</div>
+	<div id="timmer-instruction-box" class="flex-col">
+		<div id="timmer-instruction" class="flex-item-center center-t">
+			Press start when you are ready.
+		</div>
+	</div>
+</div>
+<div class="timmer-footer center-t">
+	<div id="timmer-progressBar" class="flex-row">
+		<div id="timmer-progress" class="flex-item-start">&nbsp;</div>
+		<div id="timmer-remaining" class="flex-item-end">&nbsp;</div>
+	</div>
+	<div class="flex-row">
+		<a id="timmer-play" class="button warm flex-item-full">Loading</a>
+	</div>
+</div>
+
+<!-- js-pages stuff goes at the bottom -->
+<link href="timer.css" rel="stylesheet" />
+<script src="../../services/memoryService.js"></script>
+<script src="../../services/settingsService.js" requires="memoryService.js"></script>
+<script src="timer.js"></script>

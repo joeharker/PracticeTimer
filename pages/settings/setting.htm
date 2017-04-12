@@ -1,0 +1,34 @@
+<div id="setting">
+	<div id="setting-object"></div>
+
+	<div id="setting-edit" class="hidden">
+		<input id="setting-value"/>
+		<div class="flex-row">
+			<a id="setting-save" href="#pages/settings/settings.htm" class="button cool flex-item">SAVE</a><br/>
+			<a href="#pages/settings/settings.htm" class="button warm flex-item">CANCEL</a><br/>
+		</div>
+	</div>
+
+	<div id="setting-add" class="hidden">
+		<input id="setting-addvalue"/>
+		<div class="flex-row">
+			<a id="setting-addsave" href="#pages/settings/settings.htm" class="button cool flex-item">ADD</a><br/>
+			<a href="#pages/settings/settings.htm" class="button warm flex-item">CANCEL</a><br/>
+		</div>
+	</div>
+
+	<div id="setting-remove-div" class="hidden">
+		<select id="setting-remove"></select>
+		<div class="flex-row">
+			<a id="setting-removesave" href="#pages/settings/settings.htm" class="button cool flex-item">REMOVE</a><br/>
+			<a href="#pages/settings/settings.htm" class="button warm flex-item">CANCEL</a><br/>
+		</div>
+	</div>
+</div>
+
+<!-- js-pages stuff goes at the bottom -->
+<link href="setting.css" rel="stylesheet"/>
+<script src="../../services/logService.js"></script>
+<script src="../../services/memoryService.js"></script>
+<script src="../../services/settingsService.js" requires="memoryService.js"></script>
+<script src="settings.js" requires="settingsService.js"></script>

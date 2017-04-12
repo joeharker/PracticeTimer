@@ -1,0 +1,23 @@
+far:	From the holster, aiming for the far target. Ready
+
+middle:	From the holster, aiming for the middle target. Ready
+
+close:	From the holster, aiming for the close target. Ready
+
+t1:		Click, failure to fire
+
+t2:		Dead trigger, stove pipe
+
+t3:		Dead trigger, brass low
+
+er:		Emergency reload
+
+tr:		Tactical reload. Ready
+
+reload:	safely holster your pistol. Wait until the range is clear then retrieve your magazines, reload and make ready.
+
+after:	Perform after action drills and a Tactical reload. Your pistol is considered hot. Practice is over.
+
+intro:	Please adjust your volume now. Do not let the tones rush you. And feel free to use the pause button any time.
+
+holster:	Safely holster your pistol.

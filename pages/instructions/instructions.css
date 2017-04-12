@@ -1,0 +1,30 @@
+﻿.instructions {
+	padding: 5px 0 5px 0;
+}
+
+.instructions-header {
+	position: fixed;
+	width: 100%;
+	top: 50px;				/* outer head height */
+	height: 75px;			/* this head height */
+}
+
+.instructions-torso{
+    position: absolute;
+    top: 75px;				/* this head height */
+    bottom: 40px;			/* this foot height */
+    width: 100%;            /* can use left: 0; right: 0; as well */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.instructions-footer {
+	position: fixed;
+	width: 100%;
+	bottom: 40px;			/* outer foot height */
+	height: 40px;			/* this foot height */
+}
+
+.instructions td {
+    vertical-align: top;
+}

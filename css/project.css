@@ -1,0 +1,64 @@
+﻿.content {
+	margin: 5px;
+}
+
+/* widgets */
+a.button {
+	text-decoration: none;
+	text-align: center;
+	padding: 4px 10px;
+	margin: 5px;
+	min-width: 10px;
+	border-radius: 3px;
+	border: 1px solid gray;
+	cursor: pointer;
+	background-image: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(0,0,0,0));
+}
+
+a:disabled { 
+	opacity: 0.4;
+	pointer-events: none;
+	cursor: default;
+}
+
+.index-header .button {
+	margin: 0;
+	height: 40px;
+}
+
+/* colors */
+.hot {
+	background-color: #580E0E;
+	color: white;
+}
+
+.warm {
+	background-color: #B2B03F;
+	color: black;
+}
+
+.cool {
+	background-color: #124D72;
+	color: white;
+}
+
+.cold {
+	background-color: #31A7F1;
+	color: white;
+}
+
+.yes {
+	background-color: #05581D;
+	color: white;
+}
+
+.no {
+	background-color: #580E0E;
+	color: white;
+}
+
+.error {
+	border: 1px solid red;
+	margin: 0;
+	padding: 5px;
+}

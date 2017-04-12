@@ -1,0 +1,97 @@
+﻿#timmer-play {
+    width: 91vw;
+}
+
+#timmer-progressBar {
+	border: 1px solid silver;
+    width: 94vw;
+	margin: 0 auto;
+}
+
+#timmer-progress {
+	background-color: #05581D;
+	flex-grow: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#timmer-remaining {
+	color: white;
+	flex-grow: 100;
+	padding: 0;
+	margin: 0;
+}
+
+#timmer-instruction-box {
+	position: absolute;
+	top: 15px;
+	height: 80vw;
+	width: 100vw;
+	max-height: 60vh;
+	margin: 0 auto;
+	z-index: 1;
+}
+
+#timmer-spinner {
+	border-radius: 50%;
+	height: 80vw;
+	width: 80vw;
+	max-height: 60vh;
+	max-width: 60vh;
+	margin: 0 auto;
+	border-style: solid;
+	border-width: 15px;
+	border-color: #124D72;
+}
+
+@keyframes spin {
+	0%   { transform: rotate(0); }
+	100% { transform: rotate(360deg); }
+}
+
+.pointer {
+	color: purple;
+    text-align: center;
+    margin: -22px;
+    font-size: 40px;
+}
+
+.timmer-header {
+	position: fixed;
+	width: 100vw;
+	top: 50px;				/* outer head height */
+	height: 55px;			/* this head height */
+}
+
+.timmer-torso{
+    position: absolute;
+    top: 55px;				/* this head height */
+    bottom: 60px;			/* this foot height */
+    width: 100vw;            /* can use left: 0; right: 0; as well */
+    -webkit-overflow-scrolling: touch;
+	overflow: hidden;
+}
+
+.timmer-footer {
+	position: fixed;
+	width: 100vw;
+	bottom: 40px;			/* outer foot height */
+	height: 60px;			/* this foot height */
+}
+
+.light {
+	color: #B2B03F;
+}
+
+.big {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.equalizer {
+	z-index: 0;
+	position: absolute;
+	width: 100%;
+	bottom: -60vw;
+	left: 0;
+}
