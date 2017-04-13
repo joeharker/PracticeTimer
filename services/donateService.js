@@ -1,6 +1,6 @@
 'use strict';
 
-var donateService = (function () {
+var donateService = (function (config) {
 	function setDonation(id, val) {
 		val = parseFloat(val);
 
@@ -11,7 +11,7 @@ var donateService = (function () {
 			script.async = false;
 			script.src = 'https://checkout.stripe.com/checkout.js';
 			script.className = 'stripe-button';
-			script.setAttribute('data-key', 'pk_test_ieWVvtwMZ6fzqAOFolvkG2os');
+			script.setAttribute('data-key', config.stripekey);
 			script.setAttribute('data-amount', val);
 			script.setAttribute('data-name', 'Joe Harker');
 			script.setAttribute('data-description', 'Dry Practice App');
@@ -29,4 +29,4 @@ var donateService = (function () {
 	return {
 		setDonation: setDonation
 	}
-})();
+})(config);
