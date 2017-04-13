@@ -49,8 +49,7 @@
 		<plugin name="cordova-plugin-whitelist" />
   -->
 	<!--stay awake-->
-	<gap:plugin name="nl.x-services.plugins.insomnia" source="pgb" />
-  <preference name="android-build-tool" value="gradle" />
+	<plugin name="cordova-plugin-insomnia" />
 
 	<icon src="icon.png" />
 	<splash src="splash.png" />
