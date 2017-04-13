@@ -59,18 +59,21 @@ var logService = (function () {
 		return table;
 	}
 
-	var bodyWatcher;
 	function addDebugModal() {
-		var close = document.createElement('a');
-		close.onclick = function () { document.getElementById('debug').style.display = 'none'; };
-		close.innerText = '[X]';
+		var existing = document.getElementById('debug');
 
-		var debug = document.createElement('div');
-		debug.id = 'debug';
-		debug.style.display = 'none';
-		debug.appendChild(close);
+		if (!existing) {
+			var close = document.createElement('a');
+			close.onclick = function () { document.getElementById('debug').style.display = 'none'; };
+			close.innerText = '[X]';
 
-		document.body.insertBefore(debug, document.body.firstChild);
+			var debug = document.createElement('div');
+			debug.id = 'debug';
+			debug.style.display = 'none';
+			debug.appendChild(close);
+
+			document.body.insertBefore(debug, document.body.firstChild);
+		}
 	}
 
 	//public methods
@@ -94,6 +97,7 @@ var logService = (function () {
 		}
 	}
 
+	var bodyWatcher;
 	function init(debugging) {
 		//error handler
 		window.onerror = function (msg, url, line, col, error) {
