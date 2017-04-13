@@ -87,6 +87,7 @@ Times adjusted for single press practice.
 			background-color: dodgerblue;
 		}
 	</style>
+	<link href="services/debug.css" rel="stylesheet" />
 	<link rel="icon" href="favicon.ico">
 	<link href="css/project.css" rel="stylesheet"/>
 	<link href="css/common.css" rel="stylesheet"/>
@@ -115,7 +116,7 @@ Times adjusted for single press practice.
 	<footer class="index-footer">
 		<span id="stripe"><script>donateService.setDonation('stripe', 1.00);</script></span>
 		<span class="inline">
-			$<input id="amount" type="number" min="0" value="1" oninput="donateService.setDonation('stripe', this.value);" />
+			$<input id="amount" type="number" min="0" value="1" oninput="/*donateService.setDonation('stripe', this.value);*/logService.write('test');" />
 			to the App
 		</span>
 	</footer>

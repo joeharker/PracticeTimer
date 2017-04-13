@@ -1,16 +1,29 @@
 ﻿#debug {
 	position: absolute;
-	top: 0;
-	width: 100%;
+	top: 25px;
+	left: 5px;
 	background-color: white;
+	color: black;
 	z-index: 999;
+	opacity: 0.8;
+	width: 95vw;
+	height: 95vh;
+	overflow: scroll;
 }
 
 #debug td {
 	border: 1px solid silver;
-	vertical-align: top; 
+	vertical-align: top;
 }
 
-#debug .name { color: black; }
-#debug .type { color: blue; }
-#debug .value { color: red; }
+#debug .name {
+	color: black;
+}
+
+#debug .type {
+	color: blue;
+}
+
+#debug .value {
+	color: red;
+}

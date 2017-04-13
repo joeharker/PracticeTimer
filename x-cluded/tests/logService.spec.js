@@ -3,17 +3,9 @@
 /*global describe,beforeEach,module,inject,it,expect */
 describe('logService', function () {
 	'use strict';
-	var trackJs, debug;
+	var debug;
 
-	//trackJs.track
 	beforeEach(function () {
-		trackJs = {
-			track: function (v) { }
-		};
-
-		spyOn(trackJs, 'track').and.callFake(function (v) { });
-
-		logService.testable.setTrackJs(trackJs);
 		logService.init(true);
 		debug = document.getElementById('debug');
 		if (debug) {

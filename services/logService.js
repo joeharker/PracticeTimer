@@ -59,6 +59,20 @@ var logService = (function () {
 		return table;
 	}
 
+	var bodyWatcher;
+	function addDebugModal() {
+		var close = document.createElement('a');
+		close.onclick = function () { document.getElementById('debug').style.display = 'none'; };
+		close.innerText = '[X]';
+
+		var debug = document.createElement('div');
+		debug.id = 'debug';
+		debug.style.display = 'none';
+		debug.appendChild(close);
+
+		document.body.insertBefore(debug, document.body.firstChild);
+	}
+
 	//public methods
 	function write(obj) {
 		console.log(obj);
@@ -85,34 +99,22 @@ var logService = (function () {
 		window.onerror = function (msg, url, line, col, error) {
 			if (error) {
 				write(['window.onerror', error]);
-				if (trackJs !== 'undefined') {
-					trackJs.track(error);
-				}
 			}
 		};
 
 		if (debugging) {
 			//add the debug modal
-			window.onload = function () {
-				var close = document.createElement('a');
-				close.onclick = function () { document.getElementById('debug').style.display = 'none'; };
-				close.innerText = '[X]';
-
-				var debug = document.createElement('div');
-				debug.id = 'debug';
-				debug.style.display = 'none';
-				debug.appendChild(close);
-
-				document.body.insertBefore(debug, document.body.firstChild);
-			};
+			bodyWatcher = setInterval(function () {
+				if (document.body) {
+					clearInterval(bodyWatcher);
+					addDebugModal();
+				}
+			}, 100);
 		}
 	}
 
 	return {
 		write: write,
-		init: init,
-		testable: {
-			setTrackJs: function (ref) { trackJs = ref; }
-		}
+		init: init
 	};
 })();
