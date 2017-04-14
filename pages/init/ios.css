@@ -1,0 +1,23 @@
+﻿.index-header {
+	top: 20px;
+}
+
+.index-torso {
+	top: 70px; /* head height */
+}
+
+.instructions-header {
+	top: 70px; /* outer head height */
+}
+
+.instructions-torso {
+	top: 95px; /* this head height */
+}
+
+.timmer-header {
+	top: 70px; /* outer head height */
+}
+
+.timmer-torso {
+	top: 75px; /* this head height */
+}

@@ -50,6 +50,7 @@
 		<plugin name="cordova-plugin-insomnia" />
   -->
 	<!--stay awake-->
+	<plugin name="cordova-plugin-device" />
 	<plugin name="cordova-plugin-insomnia" />
 
 	<icon src="icon.png" />
