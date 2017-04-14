@@ -59,10 +59,11 @@ var logService = (function () {
 		return table;
 	}
 
+	var addDebugModalAttempts = 0;
 	function addDebugModal() {
-		var existing = document.getElementById('debug');
-
-		if (!existing) {
+		if (!document.body) {
+			if (addDebugModalAttempts++ < 50) { setTimeout(addDebugModal, 100); }
+		} else if (!document.getElementById('debug')) {
 			var close = document.createElement('a');
 			close.onclick = function () { document.getElementById('debug').style.display = 'none'; };
 			close.innerText = '[X]';
@@ -97,7 +98,6 @@ var logService = (function () {
 		}
 	}
 
-	var bodyWatcher;
 	function init(debugging) {
 		//error handler
 		window.onerror = function (msg, url, line, col, error) {
@@ -107,13 +107,7 @@ var logService = (function () {
 		};
 
 		if (debugging) {
-			//add the debug modal
-			bodyWatcher = setInterval(function () {
-				if (document.body) {
-					clearInterval(bodyWatcher);
-					addDebugModal();
-				}
-			}, 100);
+			addDebugModal();
 		}
 	}
 

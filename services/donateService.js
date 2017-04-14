@@ -29,4 +29,4 @@ var donateService = (function (config) {
 	return {
 		setDonation: setDonation
 	}
-})(config);
+})(configService);

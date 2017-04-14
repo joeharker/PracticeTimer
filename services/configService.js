@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var config = (function () {
+var configService = (function () {
 	var env = { DEV: 0, PROD: 1 };
 
 	var environment = env.DEV;
