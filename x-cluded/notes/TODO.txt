@@ -1,2 +1,3 @@
-﻿break page code into controlers and logic
+﻿change page from script requires attribute to iife passed services
+break page code into controlers and logic
 Metronome
