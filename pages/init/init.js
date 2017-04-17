@@ -1,4 +1,4 @@
-﻿(function (donate, log, config) {
+﻿(function (log, config) {
     log.init(config.debug);
 
     function onDeviceReady() {
@@ -14,11 +14,9 @@
         }
     }
 
-	donate.setDonation('stripe', 1.00);
-
     if (typeof device !== 'undefined') {
         onDeviceReady();
     } else {
         document.addEventListener("deviceready", onDeviceReady, false);
     }
-})(donateService, logService, configService);
+})(logService, configService);
