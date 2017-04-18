@@ -12,6 +12,7 @@
 
 	function playSound(src, onended) {
 		try {
+			mp3.id = Math.random();	//safari needs a new id for onended to work
 			mp3.src = src;
 			mp3.onended = onended;
 			mp3.oncanplaythrough = mp3.play;
