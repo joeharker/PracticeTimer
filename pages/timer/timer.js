@@ -11,11 +11,10 @@
 	};
 
 	function playSound(src, onended) {
-		try {
-			mp3.id = Math.random();	
+		try {	
 			mp3.src = src;
-			mp3.onended = function () { onended(); };
-			mp3.oncanplaythrough = function () { mp3.play(); };
+			mp3.onended = function () { error.write(['onended']); onended(); };
+			mp3.oncanplaythrough = function () { error.write(['oncanplaythrough']); mp3.play(); };
 		} catch (e) {
 			error.write(['playSound error', src, e]);
 		}
