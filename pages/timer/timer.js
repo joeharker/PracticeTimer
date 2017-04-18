@@ -14,9 +14,8 @@
 		try {
 			mp3.id = Math.random();	
 			mp3.src = src;
-			mp3.onloadedmetadata = function () { mp3.currentTime = 0.01; };//safari needs for onended to work
-			mp3.onended = onended;
-			mp3.oncanplaythrough = mp3.play;
+			mp3.onended = function () { onended(); };
+			mp3.oncanplaythrough = function () { mp3.play(); };
 		} catch (e) {
 			error.write(['playSound error', src, e]);
 		}
