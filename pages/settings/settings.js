@@ -110,18 +110,24 @@
 						cell.appendChild(abreak);
 						var bbreak = document.createElement('br');
 						cell.appendChild(bbreak);
+
 						var atext = document.createTextNode('+');
 						var abutton = document.createElement('a');
 						abutton.appendChild(atext);
 						abutton.classList.add('button', 'cold');
-						abutton.onclick = function () { add(thatMap, thatType) }
+						abutton.onclick = function () { add(thatMap, thatType); };
 						cell.appendChild(abutton);
 
-						var rtext = document.createTextNode('-');
+						var abreak = document.createElement('br');
+						cell.appendChild(abreak);
+						var abreak = document.createElement('br');
+						cell.appendChild(abreak);
+
+						var rtext = document.createTextNode(' - ');
 						var rbutton = document.createElement('a');
 						rbutton.appendChild(rtext);
 						rbutton.classList.add('button', 'cold');
-						rbutton.onclick = function () { remove(thatMap, thatValue) }
+						rbutton.onclick = function () { remove(thatMap, thatValue); };
 						cell.appendChild(rbutton);
 					}
 					break;
@@ -134,7 +140,7 @@
 					sinput.id = name + '-' + thatkey;
 					sinput.type = 'button';
 					sinput.value = thatValue;
-					sinput.onfocus = function () { edit(thatMap, thatType, thatValue) }
+					sinput.onclick = function () { edit(thatMap, thatType, thatValue); };
 					cell.appendChild(sinput);
 
 					//cell = row.insertCell();
@@ -265,9 +271,9 @@
 
 	//events
 	if (document.getElementById('setting')) {
-		document.getElementById('setting-save').onclick = function() { saveEdit() };
-		document.getElementById('setting-addsave').onclick = function() { saveAdd() };
-		document.getElementById('setting-removesave').onclick = function() { saveRemove() };
+		document.getElementById('setting-save').onclick = function () { saveEdit(); };
+		document.getElementById('setting-addsave').onclick = function () { saveAdd(); };
+		document.getElementById('setting-removesave').onclick = function () { saveRemove(); };
 	}
 
 	init();
