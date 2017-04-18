@@ -6,15 +6,13 @@
 		mp3 = new Audio(),
 		instructionCount = 0;
 
-	mp3.onerror = function (e) {
-		error.write(['mp3.onerror', e]);
-	};
-
 	function playSound(src, onended) {
-		try {	
+		try {
+			mp3 = new Audio();
+			mp3.onerror = function (e) { error.write(['mp3.onerror', e]); };
+			mp3.onended = function () { onended(); };
+			mp3.oncanplaythrough = function () { mp3.play(); };
 			mp3.src = src;
-			mp3.onended = function () { error.write(['onended']); onended(); };
-			mp3.oncanplaythrough = function () { error.write(['oncanplaythrough']); mp3.play(); };
 		} catch (e) {
 			error.write(['playSound error', src, e]);
 		}
