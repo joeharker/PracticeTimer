@@ -11,8 +11,9 @@
 			mp3 = new Audio();
 			mp3.onerror = function (e) { error.write(['mp3.onerror', e]); };
 			mp3.onended = function () { onended(); };
-			mp3.oncanplaythrough = function () { mp3.play(); };
+			//mp3.oncanplaythrough = function () { mp3.play(); };
 			mp3.src = src;
+			mp3.play();
 		} catch (e) {
 			error.write(['playSound error', src, e]);
 		}
