@@ -140,6 +140,9 @@
 					sinput.id = name + '-' + thatkey;
 					sinput.type = 'button';
 					sinput.value = thatValue;
+					if (thatValue.length > 25) {
+						console.log(thatValue);
+					}
 					sinput.onclick = function () { edit(thatMap, thatType, thatValue); };
 					cell.appendChild(sinput);
 
