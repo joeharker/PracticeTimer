@@ -233,47 +233,53 @@
 	}
 
 	function saveEdit() {
-		var thisMap = document.getElementById('setting-object').innerHTML.split('.');
-		var obj = memory.get(thisMap[0]);
+		if (document.getElementById('setting-object')) {
+			var thisMap = document.getElementById('setting-object').innerHTML.split('.');
+			var obj = memory.get(thisMap[0]);
 
-		setReference(
-			obj,
-			thisMap,
-			document.getElementById('setting-value').value
-		);
-		memory.set(thisMap[0], obj);
-		document.location.reload();
+			setReference(
+				obj,
+				thisMap,
+				document.getElementById('setting-value').value
+			);
+			memory.set(thisMap[0], obj);
+			document.location.reload();
+		}
 	}
 
 	function saveAdd() {
-		var thisMap = document.getElementById('setting-object').innerHTML.split('.');
-		var obj = memory.get(thisMap[0]);
+		if (document.getElementById('setting-object')) {
+			var thisMap = document.getElementById('setting-object').innerHTML.split('.');
+			var obj = memory.get(thisMap[0]);
 
-		addReference(
-			obj,
-			thisMap,
-			document.getElementById('setting-addvalue').value
-		);
-		memory.set(thisMap[0], obj);
-		document.location.href = document.location.pathname;
-		document.location.reload();
+			addReference(
+				obj,
+				thisMap,
+				document.getElementById('setting-addvalue').value
+			);
+			memory.set(thisMap[0], obj);
+			document.location.href = document.location.pathname;
+			document.location.reload();
+		}
 	}
 
 	function saveRemove() {
-		var thisMap = document.getElementById('setting-object').innerHTML.split('.');
-		var obj = memory.get(thisMap[0]);
+		if (document.getElementById('setting-object')) {
+			var thisMap = document.getElementById('setting-object').innerHTML.split('.');
+			var obj = memory.get(thisMap[0]);
 
-		removeReference(
-			obj,
-			thisMap,
-			parseInt(document.getElementById('setting-remove').value)
-		);
-		memory.set(thisMap[0], obj);
-		document.location.reload();
+			removeReference(
+				obj,
+				thisMap,
+				parseInt(document.getElementById('setting-remove').value)
+			);
+			memory.set(thisMap[0], obj);
+			document.location.reload();
+		}
 	}
 
 	//events
-	if (document.getElementById('setting')) {
+	if (document.getElementById('setting-save')) {
 		document.getElementById('setting-save').onclick = function () { saveEdit(); };
 		document.getElementById('setting-addsave').onclick = function () { saveAdd(); };
 		document.getElementById('setting-removesave').onclick = function () { saveRemove(); };

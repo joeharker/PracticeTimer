@@ -27,129 +27,131 @@
 
 	function init() {
 		//load the idea
-		document.getElementById('timmer-idea').innerHTML = '<span class="light">&#128161; </span>' + settings.ideas[Math.floor(Math.random() * settings.ideas.length)];
+		if (document.getElementById('timmer-idea')) {
+			document.getElementById('timmer-idea').innerHTML = '<span class="light">&#128161; </span>' + settings.ideas[Math.floor(Math.random() * settings.ideas.length)];
 
-		//build the schedule
-		addToMenu(
-			settings.practice.farTarget.count,
-			'From the holster.<br \/>Aiming for the<br \/><br \/><span class="big">Far<\/span><br \/><br \/>target.<br \/>Ready...',
-			'far',
-			settings.practice.farTarget.seconds,
-			false
-		);
-		addToMenu(
-			settings.practice.middleTarget.count,
-			'From the holster.<br \/>Aiming for the<br \/><br \/><span class="big">Middle<\/span><br \/><br \/>target.<br \/>Ready...',
-			'middle',
-			settings.practice.middleTarget.seconds,
-			false
-		);
-		addToMenu(
-			settings.practice.closeTarget.count,
-			'From the holster.<br \/>Aiming for the<br \/><br \/><span class="big">Close<\/span><br \/><br \/>target.<br \/>Ready...',
-			'close',
-			settings.practice.closeTarget.seconds,
-			false
-		);
-		addToMenu(
-			settings.practice.failureToFire.count,
-			'Type 1<br \/><br \/><span class="big">Failure to fire.<\/span><br \/><br \/>Ready...',
-			't1',
-			settings.practice.failureToFire.seconds,
-			true
-		);
-		addToMenu(
-			settings.practice.failureToEject.count,
-			'Type 2<br \/><br \/><span class="big">Failure to eject.<\/span><br \/><br \/>Ready...',
-			't2',
-			settings.practice.failureToEject.seconds,
-			true
-		);
-		addToMenu(
-			settings.practice.failureToExtract.count,
-			'Type 3<br \/><br \/><span class="big">Failure to extract.<\/span><br \/><br \/>Ready...',
-			't3',
-			settings.practice.failureToExtract.seconds,
-			true
-		);
-		addToMenu(
-			settings.practice.tacticalReload.count,
-			'<span class="big">Tactical reload.<\/span><br \/><br \/>Ready...',
-			'tr',
-			settings.practice.tacticalReload.seconds,
-			true
-		);
+			//build the schedule
+			addToMenu(
+				settings.practice.farTarget.count,
+				'From the holster.<br \/>Aiming for the<br \/><br \/><span class="big">Far<\/span><br \/><br \/>target.<br \/>Ready...',
+				'far',
+				settings.practice.farTarget.seconds,
+				false
+			);
+			addToMenu(
+				settings.practice.middleTarget.count,
+				'From the holster.<br \/>Aiming for the<br \/><br \/><span class="big">Middle<\/span><br \/><br \/>target.<br \/>Ready...',
+				'middle',
+				settings.practice.middleTarget.seconds,
+				false
+			);
+			addToMenu(
+				settings.practice.closeTarget.count,
+				'From the holster.<br \/>Aiming for the<br \/><br \/><span class="big">Close<\/span><br \/><br \/>target.<br \/>Ready...',
+				'close',
+				settings.practice.closeTarget.seconds,
+				false
+			);
+			addToMenu(
+				settings.practice.failureToFire.count,
+				'Type 1<br \/><br \/><span class="big">Failure to fire.<\/span><br \/><br \/>Ready...',
+				't1',
+				settings.practice.failureToFire.seconds,
+				true
+			);
+			addToMenu(
+				settings.practice.failureToEject.count,
+				'Type 2<br \/><br \/><span class="big">Failure to eject.<\/span><br \/><br \/>Ready...',
+				't2',
+				settings.practice.failureToEject.seconds,
+				true
+			);
+			addToMenu(
+				settings.practice.failureToExtract.count,
+				'Type 3<br \/><br \/><span class="big">Failure to extract.<\/span><br \/><br \/>Ready...',
+				't3',
+				settings.practice.failureToExtract.seconds,
+				true
+			);
+			addToMenu(
+				settings.practice.tacticalReload.count,
+				'<span class="big">Tactical reload.<\/span><br \/><br \/>Ready...',
+				'tr',
+				settings.practice.tacticalReload.seconds,
+				true
+			);
 
-		// emergency reloads when the first mags are empty
-		var mag = settings.practice.magCount;
-		var round = settings.practice.magRounds;
-		var s = 0;
-		while (s < schedule.length) {
-			// reload time before each draw
-			if (['far', 'middle', 'close'].indexOf(schedule[s].sound) !== -1) {
-				schedule.splice(s, 0, {
-					text: 'Safely<br \/><br \/><span class="big">holster<\/span><br \/><br \/>your pistol.',
-					sound: 'holster',
-					timer: settings.practice.safelyHolsterSeconds
-				});
+			// emergency reloads when the first mags are empty
+			var mag = settings.practice.magCount;
+			var round = settings.practice.magRounds;
+			var s = 0;
+			while (s < schedule.length) {
+				// reload time before each draw
+				if (['far', 'middle', 'close'].indexOf(schedule[s].sound) !== -1) {
+					schedule.splice(s, 0, {
+						text: 'Safely<br \/><br \/><span class="big">holster<\/span><br \/><br \/>your pistol.',
+						sound: 'holster',
+						timer: settings.practice.safelyHolsterSeconds
+					});
+					s++;
+				}
+
+				// start counting rounds
+				if (schedule[s].sound === 't3' || schedule[s].sound === 'tr') {
+					//retain the current mag if there are no more mags
+					if (mag > 1) {
+						mag--;
+						round = settings.practice.magRounds;
+					}
+				} else {
+					round--;
+				}
 				s++;
-			}
 
-			// start counting rounds
-			if (schedule[s].sound === 't3' || schedule[s].sound === 'tr') {
-				//retain the current mag if there are no more mags
-				if (mag > 1) {
-					mag--;
+				if (round <= 0 || mag <= 0) {
+					if (round <= 0) {
+						mag--;	//this mag subtraction happens here instead of when we reload so we dont ask users to reload and top up mags
+					}
+
+					if (mag <= 0) {
+						// retrieve message when last mag is empty
+						schedule.splice(s, 0, {
+							text: 'Safely holster.<br \/>Wait until the range is clear<br \/>then retrieve your magazines<br \/><span class="big">reload<\/span> and make ready.',
+							sound: 'reload',
+							timer: 0
+						});
+						mag = settings.practice.magCount;
+					} else {
+						// timed emergency reloads when mags run out
+						schedule.splice(s, 0, {
+							text: '<span class="big">Emergency reload.<\/span><br \/><br \/>Ready...',
+							sound: 'er',
+							timer: settings.practice.emergencyReloadSeconds
+						});
+						// no mag subtraction here, we had to do it early so we could give the user efficient instructions
+					}
+
+					s++;
 					round = settings.practice.magRounds;
 				}
-			} else {
-				round--;
 			}
-			s++;
 
-			if (round <= 0 || mag <= 0) {
-				if (round <= 0) {
-					mag--;	//this mag subtraction happens here instead of when we reload so we dont ask users to reload and top up mags
-				}
+			// after action drills at the end
+			schedule.splice(s, 0, {
+				text: 'Perform<br \/><br \/><span class="big">after action drills.<\/span><br \/>and a<br \/><span class="big">Tactical reload.<\/span>',
+				sound: 'after',
+				timer: 0
+			});
 
-				if (mag <= 0) {
-					// retrieve message when last mag is empty
-					schedule.splice(s, 0, {
-						text: 'Safely holster.<br \/>Wait until the range is clear<br \/>then retrieve your magazines<br \/><span class="big">reload<\/span> and make ready.',
-						sound: 'reload',
-						timer: 0
-					});
-					mag = settings.practice.magCount;
-				} else {
-					// timed emergency reloads when mags run out
-					schedule.splice(s, 0, {
-						text: '<span class="big">Emergency reload.<\/span><br \/><br \/>Ready...',
-						sound: 'er',
-						timer: settings.practice.emergencyReloadSeconds
-					});
-					// no mag subtraction here, we had to do it early so we could give the user efficient instructions
-				}
+			// intro at the begining before random stuff
+			schedule.splice(0, 0, {
+				text: 'Please adjust your volume now.<br \/><br \/>Do not let the tones rush you.<br \/>Feel free to use the pause button.',
+				sound: 'intro',
+				timer: 0
+			});
 
-				s++;
-				round = settings.practice.magRounds;
-			}
+			document.getElementById('timmer-play').text = 'Start';
 		}
-
-		// after action drills at the end
-		schedule.splice(s, 0, {
-			text: 'Perform<br \/><br \/><span class="big">after action drills.<\/span><br \/>and a<br \/><span class="big">Tactical reload.<\/span>',
-			sound: 'after',
-			timer: 0
-		});
-
-		// intro at the begining before random stuff
-		schedule.splice(0, 0, {
-			text: 'Please adjust your volume now.<br \/><br \/>Do not let the tones rush you.<br \/>Feel free to use the pause button.',
-			sound: 'intro',
-			timer: 0
-		});
-
-		document.getElementById('timmer-play').text = 'Start';
 	}
 
 	function tryBuz() {
@@ -220,7 +222,9 @@
 	}
 
 	//events
-	document.getElementById('timmer-play').onclick = function() { playPause(); };
+	if (document.getElementById('timmer-play')) {
+		document.getElementById('timmer-play').onclick = function () { playPause(); };
+	}
 
 	init();
 })(settingsService, logService);
