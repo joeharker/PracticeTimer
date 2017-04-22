@@ -27,8 +27,8 @@
 	<preference name="show-splash-screen-spinner" value="false" />
 
 	<!--
-		<plugin name="cordova-plugin-battery-status" />
-		<plugin name="cordova-plugin-statusbar" />
+	<plugin name="cordova-plugin-battery-status" />
+	<plugin name="cordova-plugin-statusbar" />
     <plugin name="cordova-plugin-camera" />
     <plugin name="cordova-plugin-media-capture" />
     <plugin name="cordova-plugin-console" />
@@ -46,12 +46,13 @@
     <plugin name="cordova-plugin-network-information" />
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-vibration" />
-		<plugin name="cordova-plugin-whitelist" />
-		<plugin name="cordova-plugin-insomnia" />
+	<plugin name="cordova-plugin-whitelist" />
+	<plugin name="cordova-plugin-insomnia" />
   -->
 	<!--stay awake-->
 	<plugin name="cordova-plugin-device" />
 	<plugin name="cordova-plugin-insomnia" />
+	<plugin name="cordova-plugin-inappbrowser" />
 
 	<icon src="icon.png" />
 	<splash src="splash.png" />

@@ -37,7 +37,8 @@ var settingsService = (function (memory) {
 			'Practice with forward back and side strafing',
 			'Practice with your tack light',
 			'Work on body pushing forward',
-			'Work on speed, but stay in the A zone'
+			'Work on speed, but stay in the A zone',
+			'Turn your recoil and recovery into one smooth motion'
 		];
 		memory.set('ideas', ideas);
 	}
