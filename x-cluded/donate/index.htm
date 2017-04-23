@@ -1,86 +1,90 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Donate</title>
-    <style>
-        html, body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            line-height: 200%;
-        }
+	<title>Donate</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta http-equiv="Cache-control" content="public" max-age="86400" />
+	<style>
+		html, body {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			line-height: 200%;
+		}
 
-        #amount {
-            width: 50px;
-            margin-top: 6px;
-        }
+		#amount {
+			width: 50px;
+			margin-top: 6px;
+		}
 
-        #stripe {
-            display: inline-block;
-            width: 75px;
-            height: 32px;
-            border-radius: 5px;
-        }
+		#stripe {
+			display: inline-block;
+			width: 75px;
+			height: 32px;
+			border-radius: 5px;
+		}
 
-        a.button {
-            text-decoration: none;
-            text-align: center;
-            padding: 4px 10px;
-            margin: 5px;
-            min-width: 10px;
-            border-radius: 3px;
-            border: 1px solid gray;
-            cursor: pointer;
-            background-image: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(0,0,0,0));
-        }
+		a.button {
+			text-decoration: none;
+			text-align: center;
+			padding: 4px 10px;
+			margin: 5px;
+			min-width: 10px;
+			border-radius: 3px;
+			border: 1px solid gray;
+			cursor: pointer;
+			background-image: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(0,0,0,0));
+		}
 
-        .cool {
-            background-color: #124D72;
-            color: white;
-        }
-    </style>
-    <script>
-        function setDonation(id, val) {
-            val = parseFloat(val);
+		.cool {
+			background-color: #124D72;
+			color: white;
+		}
+	</style>
+	<script>
+		function setDonation(id, val) {
+			val = parseFloat(val);
 
-            if (!isNaN(val)) {
-                val = parseInt(val * 100);
+			if (!isNaN(val)) {
+				val = parseInt(val * 100);
 
-                var script = document.createElement('script');
-                script.async = false;
-                script.src = 'https://checkout.stripe.com/checkout.js';
-                script.className = 'stripe-button';
-                script.setAttribute('data-key', 'pk_test_ieWVvtwMZ6fzqAOFolvkG2os');
-                script.setAttribute('data-amount', val);
-                script.setAttribute('data-name', 'Joe Harker');
-                script.setAttribute('data-description', 'Dry Practice App');
-                script.setAttribute('data-image', 'https://s3.amazonaws.com/stripe-uploads/acct_1A7FYZJc5kpU4H77merchant-icon-1491881283747-icon.128.png');
-                script.setAttribute('data-zip-code', 'true');
-                script.setAttribute('data-label', 'Donate');
-                script.setAttribute('data-bitcoin', 'true');
-                script.setAttribute('data-locale', 'auto');
+				var script = document.createElement('script');
+				script.async = false;
+				script.src = 'https://checkout.stripe.com/checkout.js';
+				script.className = 'stripe-button';
+				script.setAttribute('data-key', 'pk_test_ieWVvtwMZ6fzqAOFolvkG2os');
+				script.setAttribute('data-amount', val);
+				script.setAttribute('data-name', 'Joe Harker');
+				script.setAttribute('data-description', 'Dry Practice App');
+				script.setAttribute('data-image', 'https://s3.amazonaws.com/stripe-uploads/acct_1A7FYZJc5kpU4H77merchant-icon-1491881283747-icon.128.png');
+				script.setAttribute('data-zip-code', 'true');
+				script.setAttribute('data-label', 'Donate');
+				script.setAttribute('data-bitcoin', 'true');
+				script.setAttribute('data-locale', 'auto');
 
-                document.getElementById(id).innerHTML = '';
-                document.getElementById(id).appendChild(script);
-            }
-        }
-    </script>
+				document.getElementById(id).innerHTML = '';
+				document.getElementById(id).appendChild(script);
+			}
+		}
+	</script>
 </head>
 <body>
-    <p>
-        It has been a lot of fun working on and using the Handgun Practice Timer.<br />
-        Inspired by my training at Front Sight, IDPA and USPSA competitions.<br />
-        I designed it to practice drills for live fire and dry practice handgun presenting from the holster.<br />
-        Any donations and suggestions are greatly appreciated.<br />
-    </p>
-    <div>
-        <span id="stripe"></span>
-        <span class="inline">
-            $<input id="amount" type="number" min="0" value="1" oninput="setDonation('stripe', this.value);" />
-            to the App
-        </span>
-        or
-        <a class="button cool" href="mailto:practiceTimmer@007Dev.com">Email a comment</a> to practiceTimmer@007Dev.com
-    </div>
-    <script>setDonation('stripe', 1.00);</script>
+	<p>
+		It has been a lot of fun working on and using the Handgun Practice Timer.<br />
+		Inspired by my training at Front Sight, IDPA and USPSA competitions.<br />
+		I designed it to practice drills for live fire and dry practice handgun presenting from the holster.<br />
+		Any donations and suggestions are greatly appreciated.<br />
+	</p>
+	<div>
+		<span id="stripe"></span>
+		<span class="inline">
+			$<input id="amount" type="number" min="0" value="1" oninput="setDonation('stripe', this.value);" />
+			to the App
+		</span>
+		or
+		<a class="button cool" href="mailto:practiceTimmer@007Dev.com">Email a comment</a> to practiceTimmer@007Dev.com
+	</div>
+	<script>setDonation('stripe', 1.00);</script>
 </body>
 </html>
