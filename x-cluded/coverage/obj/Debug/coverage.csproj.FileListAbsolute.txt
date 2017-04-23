@@ -1,0 +1,6 @@
+C:\Dev\github\timer\x-cluded\coverage\bin\Debug\coverage.exe.config
+C:\Dev\github\timer\x-cluded\coverage\bin\Debug\coverage.exe
+C:\Dev\github\timer\x-cluded\coverage\bin\Debug\coverage.pdb
+C:\Dev\github\timer\x-cluded\coverage\obj\Debug\coverage.csprojResolveAssemblyReference.cache
+C:\Dev\github\timer\x-cluded\coverage\obj\Debug\coverage.exe
+C:\Dev\github\timer\x-cluded\coverage\obj\Debug\coverage.pdb
