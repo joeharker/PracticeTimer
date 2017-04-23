@@ -31,7 +31,7 @@ namespace coverage
 
 			//excecution
 			var sources = GetFiles(appRoot, sourcePattern, sourceNotPatterns);
-			//sources = SortDependancies(sources);
+			sources = SortDependancies(sources);
 			var sourceHtml = MakeHtml(sources, sourceHtmlHead, sourceHtmlTail, sourceTrim);
 			ReplaceHtml(runnerPath, sourceHtml, sourceStartTag, sourceEndTag);
 
@@ -105,28 +105,58 @@ namespace coverage
 		}
 
 		static string[] SortDependancies(string[] files) {
-			List<string> prioritized = new List<string>();
-			List<object> unsorted = new List<object>();
+			List<Details> prioritized = new List<Details>();
+			List<Details> unsorted = new List<Details>();
 
 			foreach (var f in files)
 			{
-				var name = Regex.Match(f, @"([^/]+).js+$").Groups[1].Value;
+				var name = Regex.Match(f, @"([^\\]+).js+$").Groups[1].Value;
 				var text = ReadFile(f);
-				var dependsOn = Regex.Match(text, @"}[ \t\r\n]*\)[ \t\r\n]*\(([^)]+)\);");
+				var dependsOn = Regex.Match(text, @"[\r\n]}[ \t\r\n]*\)[ \t\r\n]*\(([^)]+)\);");
 				string[] dependancies = new string[0];
 				if (dependsOn.Success)
 				{
 					dependancies = dependsOn.Groups[1].Value.Split(", ".ToCharArray());
 				}
 
-				unsorted.Add(new {File = f, name = name, dependancies = dependancies });
+				unsorted.Add(new Details { Path = f, Name = name, Dependancies = dependancies });
 			}
+			prioritized = Prioritize(prioritized, unsorted);
 
-			return prioritized.ToArray();
+			return prioritized.Select(p => p.Path).ToArray();
 		}
 
-		static List<string> AppendPriority(List<string> prioritized, string file)
+		static List<Details> Prioritize(List<Details> prioritized, List<Details> unsorted)
 		{
+			var change = false;
+
+			foreach (var d in unsorted[0].Dependancies)
+			{
+				var higher = unsorted.Where(u => u.Name == d).FirstOrDefault();
+				if (higher != null)
+				{
+					change = true;
+					unsorted.Remove(higher);
+					unsorted.Insert(0, higher);
+				}
+			}
+
+			if (change)
+			{
+				prioritized = Prioritize(prioritized, unsorted);
+			}
+
+			if (unsorted.Count > 0)
+			{
+				var lower = unsorted[0];
+				unsorted.Remove(lower);
+				prioritized.Add(lower);
+			}
+
+			if (unsorted.Count > 0) {
+				prioritized = Prioritize(prioritized, unsorted);
+			}
+
 			return prioritized;
 		}
 	}
