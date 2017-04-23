@@ -1,6 +1,7 @@
 ﻿#settings input {
 	width: 100%;
 	min-width: 25px;
+	white-space: normal;
 }
 
 #settings table {
@@ -16,4 +17,8 @@
 #settings .edit {
 	background-color: white;
 	color: #31A7F1;
+}
+
+.addremove {
+	display: block;
 }
