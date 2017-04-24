@@ -15,7 +15,7 @@ var configService = (function () {
 	function init() {
 		//PROD values as default
 		values = {
-			root: location.href.replace(/[^/]*$|[^/]+#.*$/, ''),
+			root: '',	//location.href.replace(/[^/]*$|[^/]+#.*$/, ''),
 			debug: false,
 			testable: values.testable
 		};

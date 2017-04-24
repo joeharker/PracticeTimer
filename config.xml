@@ -53,6 +53,7 @@
 	<plugin name="cordova-plugin-device" />
 	<plugin name="cordova-plugin-insomnia" />
 	<plugin name="cordova-plugin-inappbrowser" />
+	<plugin name="cordova-plugin-media" />
 
 	<icon src="icon.png" />
 	<splash src="splash.png" />
