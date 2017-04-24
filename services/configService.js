@@ -15,7 +15,7 @@ var configService = (function () {
 	function init() {
 		//PROD values as default
 		values = {
-			stripekey: 'pk_live_g4pIacdbYnc0Tc3qxziw071R',
+			root: location.origin + '/',
 			debug: false,
 			testable: values.testable
 		};
@@ -23,7 +23,6 @@ var configService = (function () {
 		//only set values that are different from prod
 		switch (environment) {
 			case env.DEV:
-				values.stripekey = 'pk_test_ieWVvtwMZ6fzqAOFolvkG2os';
 				values.debug = true;
 				break;
 

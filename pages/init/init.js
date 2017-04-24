@@ -1,5 +1,5 @@
 ﻿var init = (function (log, config) {
-    log.init(config.debug);
+	log.init(config.debug);
 
 	function onDeviceReady() {
         if (device.platform === 'iOS') {

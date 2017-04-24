@@ -1,4 +1,4 @@
-(function (settings, error) {
+(function (settings, error, config) {
 	'use strict';
 
 	var lastSound = '';
@@ -168,13 +168,13 @@
 				setTimeout(function() {
 					document.getElementById('timmer-instruction').innerHTML = '<span class="big">GO<\/span>';
 					document.getElementById('timmer-spinner').style['border-color'] = 'lime';
-					playSound('sound/buz.mp3', function () { });
+					playSound(config.root + 'sound/buz.mp3', function () { });
 					document.getElementById('timmer-spinner').style['animation'] = 'spin ' + schedule[0].timer + 's linear 1';
 
 					setTimeout(function() {
 						document.getElementById('timmer-instruction').innerHTML = '<span class="big">STOP<\/span>';
 						document.getElementById('timmer-spinner').style['border-color'] = 'red';
-						playSound('sound/buz.mp3', tryInstruction);
+						playSound(config.root + 'sound/buz.mp3', tryInstruction);
 						document.getElementById('timmer-play').removeAttribute('disabled');
 						document.getElementById('timmer-play').classList.remove('disabled');
 					}, schedule[0].timer * 1000);
@@ -194,7 +194,7 @@
 			schedule.splice(0, 1);
 			if (schedule.length > 0) {
 				document.getElementById('timmer-instruction').innerHTML = schedule[0].text;
-				playSound('sound/' + schedule[0].sound + '.mp3', tryBuz);
+				playSound(config.root + 'sound/' + schedule[0].sound + '.mp3', tryBuz);
 			} else {
 				document.location.href = 'index.html';
 			}
@@ -227,4 +227,4 @@
 	}
 
 	init();
-})(settingsService, logService);
+})(settingsService, logService, configService);
