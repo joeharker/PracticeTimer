@@ -1,31 +1,10 @@
-(function (settings, error, config) {
+(function (settings, error, config, sound) {
 	'use strict';
 
 	var lastSound = '';
 	var schedule = [],
 		mp3 = new Audio(),
 		instructionCount = 0;
-
-	function playSound(src, onended) {
-		try {
-			if (typeof Media !== 'undefined') {
-				mp3 = new Media(
-					src,
-					function () { onended(); },
-					function (e) { error.write(['Media error', src, e]); }
-				);
-				mp3.play();
-			} else {
-				mp3 = new Audio();
-				mp3.onerror = function (e) { error.write(['mp3.onerror', e]); };
-				mp3.onended = function () { onended(); };
-				mp3.src = src;
-				mp3.play();
-			}
-		} catch (e) {
-			error.write(['playSound error', src, e]);
-		}
-	}
 
 	function addToMenu(count, text, sound, time, rnd) {
 		for (var c = 0; c < count; c++) {
@@ -177,13 +156,13 @@
 				setTimeout(function() {
 					document.getElementById('timmer-instruction').innerHTML = '<span class="big">GO<\/span>';
 					document.getElementById('timmer-spinner').style['border-color'] = 'lime';
-					playSound(config.root + 'sound/buz.mp3', function () { });
+					sound.play(config.root + 'sound/buz.mp3', function () { });
 					document.getElementById('timmer-spinner').style['animation'] = 'spin ' + schedule[0].timer + 's linear 1';
 
 					setTimeout(function() {
 						document.getElementById('timmer-instruction').innerHTML = '<span class="big">STOP<\/span>';
 						document.getElementById('timmer-spinner').style['border-color'] = 'red';
-						playSound(config.root + 'sound/buz.mp3', tryInstruction);
+						sound.play(config.root + 'sound/buz.mp3', tryInstruction);
 						document.getElementById('timmer-play').removeAttribute('disabled');
 						document.getElementById('timmer-play').classList.remove('disabled');
 					}, schedule[0].timer * 1000);
@@ -203,7 +182,7 @@
 			schedule.splice(0, 1);
 			if (schedule.length > 0) {
 				document.getElementById('timmer-instruction').innerHTML = schedule[0].text;
-				playSound(config.root + 'sound/' + schedule[0].sound + '.mp3', tryBuz);
+				sound.play(config.root + 'sound/' + schedule[0].sound + '.mp3', tryBuz);
 			} else {
 				document.location.href = 'index.html';
 			}
@@ -236,4 +215,4 @@
 	}
 
 	init();
-})(settingsService, logService, configService);
+})(settingsService, logService, configService, soundService);
