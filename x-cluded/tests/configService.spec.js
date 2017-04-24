@@ -9,6 +9,7 @@ describe('configService', function () {
 	});
 
 	it('GIVEN any, WHEN configService THEN there is a value for root', function () {
+		console.log(['root', configService.root]);
 		expect(configService.root).not.toBe(undefined);
 	});
 });
