@@ -8,11 +8,20 @@
 
 	function playSound(src, onended) {
 		try {
-			mp3 = new Audio();
-			mp3.onerror = function (e) { error.write(['mp3.onerror', e]); };
-			mp3.onended = function () { onended(); };
-			mp3.src = src;
-			mp3.play();
+			if (typeof Media !== 'undefined') {
+				mp3 = new Media(
+					src,
+					function () { onended(); },
+					function (e) { error.write(['Media error', src, e]); }
+				);
+				mp3.play();
+			} else {
+				mp3 = new Audio();
+				mp3.onerror = function (e) { error.write(['mp3.onerror', e]); };
+				mp3.onended = function () { onended(); };
+				mp3.src = src;
+				mp3.play();
+			}
 		} catch (e) {
 			error.write(['playSound error', src, e]);
 		}
