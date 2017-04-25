@@ -202,10 +202,10 @@
 			tryInstruction();
 		} else if (document.getElementById('timmer-play').text === 'Pause') {
 			document.getElementById('timmer-play').text = 'Play';
-			mp3.pause();
+			sound.pause();
 		} else {
 			document.getElementById('timmer-play').text = 'Pause';
-			mp3.play();
+			sound.resume();
 		}
 	}
 

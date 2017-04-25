@@ -21,6 +21,14 @@ var soundService = (function () {
 		}
 	}
 
+	function pause() {
+		mp3.pause();
+	}
+
+	function resume() {
+		mp3.play();
+	}
+
 	function onDeviceReady() {
 		if (typeof Media !== 'undefined' && device.platform === 'iOS') {
 			iosMedia = true;
@@ -35,6 +43,8 @@ var soundService = (function () {
 
 	return {
 		play: play,
+		pause: pause,
+		resume: resume,
 		testable: {
 			onDeviceReady: onDeviceReady
 		}
