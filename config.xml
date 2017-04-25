@@ -6,7 +6,7 @@
   <!--sku=a number you keep track of for each app=0001 -->
 
   <name>Practice Timer</name>
-  <description>Practice drills for live and dry practice handgun, presenting from the holster.</description>
+  <description>Practice drills for live fire and dry practice pistol presenting from the holster</description>
   <author href="http://007dev.com" email="joeharker@007dev.com">Joe Harker</author>
 	
   <content src="index.html"/>
