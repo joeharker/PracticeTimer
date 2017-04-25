@@ -8,7 +8,7 @@ echo signing
 "c:\Program Files\Java\jdk1.8.0_131\bin\jarsigner.exe" -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore Android\App.keystore Android\App-temp.apk App
 
 echo aligning
-"zipalign\zipalign.exe" -v 4 Android\App-temp.apk Android\App.apk
+"C:\Apps\zipalign\zipalign.exe" -v 4 Android\App-temp.apk Android\App.apk
 
 pause
 cls
