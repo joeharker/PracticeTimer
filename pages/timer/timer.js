@@ -3,7 +3,6 @@
 
 	var lastSound = '';
 	var schedule = [],
-		mp3 = new Audio(),
 		instructionCount = 0;
 
 	function addToMenu(count, text, sound, time, rnd) {

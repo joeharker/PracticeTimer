@@ -21,7 +21,7 @@
 .instructions-footer {
 	position: fixed;
 	width: 100%;
-	bottom: 40px;			/* outer foot height */
+	bottom: 0;			/* outer foot height */
 	height: 40px;			/* this foot height */
 }
 

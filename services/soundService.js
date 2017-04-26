@@ -1,8 +1,8 @@
 'use strict';
 
 var soundService = (function () {
-	var mp3;
 	var iosMedia = false;
+	var mp3;
 
 	function play(src, onended) {
 		if (iosMedia) {
@@ -13,11 +13,10 @@ var soundService = (function () {
 			);
 			mp3.play();
 		} else {
-			mp3 = new Audio();
-			mp3.onerror = function (e) { error.write(['mp3.onerror', src, e]); };
+			mp3 = new Audio(src);
 			mp3.onended = function () { onended(); };
-			mp3.src = src;
-			mp3.play();
+			mp3.onerror = function (e) { error.write(['mp3.onerror', src, e]); };
+			mp3.oncanplaythrough = function () { mp3.play(); };
 		}
 	}
 

@@ -21,3 +21,7 @@
 .timmer-torso {
 	top: 75px; /* this head height */
 }
+
+#settings input {
+	min-height: 40px;
+}

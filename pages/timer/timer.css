@@ -75,7 +75,7 @@
 .timmer-footer {
 	position: fixed;
 	width: 100vw;
-	bottom: 40px;			/* outer foot height */
+	bottom: 0;			/* outer foot height */
 	height: 60px;			/* this foot height */
 }
 
