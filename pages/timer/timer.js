@@ -1,22 +1,10 @@
-(function (settings, error) {
+(function (settings, error, config, sound) {
 	'use strict';
 
 	var lastSound = '';
 	var schedule = [],
 		mp3 = new Audio(),
 		instructionCount = 0;
-
-	function playSound(src, onended) {
-		try {
-			mp3 = new Audio();
-			mp3.onerror = function (e) { error.write(['mp3.onerror', e]); };
-			mp3.onended = function () { onended(); };
-			mp3.src = src;
-			mp3.play();
-		} catch (e) {
-			error.write(['playSound error', src, e]);
-		}
-	}
 
 	function addToMenu(count, text, sound, time, rnd) {
 		for (var c = 0; c < count; c++) {
@@ -168,13 +156,13 @@
 				setTimeout(function() {
 					document.getElementById('timmer-instruction').innerHTML = '<span class="big">GO<\/span>';
 					document.getElementById('timmer-spinner').style['border-color'] = 'lime';
-					playSound('sound/buz.mp3', function () { });
+					sound.play(config.root + 'sound/buz.mp3', function () { });
 					document.getElementById('timmer-spinner').style['animation'] = 'spin ' + schedule[0].timer + 's linear 1';
 
 					setTimeout(function() {
 						document.getElementById('timmer-instruction').innerHTML = '<span class="big">STOP<\/span>';
 						document.getElementById('timmer-spinner').style['border-color'] = 'red';
-						playSound('sound/buz.mp3', tryInstruction);
+						sound.play(config.root + 'sound/buz.mp3', tryInstruction);
 						document.getElementById('timmer-play').removeAttribute('disabled');
 						document.getElementById('timmer-play').classList.remove('disabled');
 					}, schedule[0].timer * 1000);
@@ -194,7 +182,7 @@
 			schedule.splice(0, 1);
 			if (schedule.length > 0) {
 				document.getElementById('timmer-instruction').innerHTML = schedule[0].text;
-				playSound('sound/' + schedule[0].sound + '.mp3', tryBuz);
+				sound.play(config.root + 'sound/' + schedule[0].sound + '.mp3', tryBuz);
 			} else {
 				document.location.href = 'index.html';
 			}
@@ -214,10 +202,10 @@
 			tryInstruction();
 		} else if (document.getElementById('timmer-play').text === 'Pause') {
 			document.getElementById('timmer-play').text = 'Play';
-			mp3.pause();
+			sound.pause();
 		} else {
 			document.getElementById('timmer-play').text = 'Pause';
-			mp3.play();
+			sound.resume();
 		}
 	}
 
@@ -227,4 +215,4 @@
 	}
 
 	init();
-})(settingsService, logService);
+})(settingsService, logService, configService, soundService);

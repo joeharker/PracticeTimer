@@ -4,5 +4,7 @@
 describe('settings', function () {
 	'use strict';
 
-	//TODO
+	it('TODO', function () {
+		expect(true).toBe(true);
+	});
 });

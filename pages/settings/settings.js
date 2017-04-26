@@ -114,7 +114,7 @@
 						var atext = document.createTextNode('+');
 						var abutton = document.createElement('a');
 						abutton.appendChild(atext);
-						abutton.classList.add('button', 'cold');
+						abutton.classList.add('button', 'cold', 'addremove');
 						abutton.onclick = function () { add(thatMap, thatType); };
 						cell.appendChild(abutton);
 
@@ -126,7 +126,7 @@
 						var rtext = document.createTextNode(' - ');
 						var rbutton = document.createElement('a');
 						rbutton.appendChild(rtext);
-						rbutton.classList.add('button', 'cold');
+						rbutton.classList.add('button', 'cold', 'addremove');
 						rbutton.onclick = function () { remove(thatMap, thatValue); };
 						cell.appendChild(rbutton);
 					}
@@ -140,9 +140,6 @@
 					sinput.id = name + '-' + thatkey;
 					sinput.type = 'button';
 					sinput.value = thatValue;
-					if (thatValue.length > 25) {
-						console.log(thatValue);
-					}
 					sinput.onclick = function () { edit(thatMap, thatType, thatValue); };
 					cell.appendChild(sinput);
 

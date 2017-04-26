@@ -18,6 +18,9 @@ var browserService = (function () {
 	}
 
 	return {
-		open: open
+		open: open,
+		testable: {
+			onDeviceReady: onDeviceReady
+		}
 	};
 })();

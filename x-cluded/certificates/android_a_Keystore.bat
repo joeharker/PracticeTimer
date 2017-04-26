@@ -1,11 +1,11 @@
 @echo off
-echo download the JRE at http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html
+echo download the "JDK install (Java SE)" at http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 echo locating
 cd "%~dp0"
 
 echo generating the private key
-"C:\Program Files\Java\jdk1.7.0_79\jre\bin\keytool.exe" -genkey -v -keystore Android\App.keystore -alias App -keyalg RSA -keysize 2048 -validity 10000
+"c:\Program Files\Java\jdk1.8.0_131\bin\keytool.exe" -genkey -v -keystore android\App.keystore -alias App -keyalg RSA -keysize 2048 -validity 10000
 
 echo use App.keystore at https://build.phonegap.com/apps/
 echo your alias is "App"

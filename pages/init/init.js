@@ -1,7 +1,7 @@
-﻿(function (log, config) {
-    log.init(config.debug);
+﻿var init = (function (log, config) {
+	log.init(config.debug);
 
-    function onDeviceReady() {
+	function onDeviceReady() {
         if (device.platform === 'iOS') {
             var link = document.createElement('link');
             link.rel = 'stylesheet';
@@ -18,5 +18,12 @@
         onDeviceReady();
     } else {
         document.addEventListener("deviceready", onDeviceReady, false);
-    }
+	}
+
+	return {
+		testable: {
+			onDeviceReady: onDeviceReady,
+			setDevice: function (ref) { device = ref; }
+		}
+	}
 })(logService, configService);
