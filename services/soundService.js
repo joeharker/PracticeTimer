@@ -1,6 +1,6 @@
 'use strict';
 
-var soundService = (function () {
+var soundService = (function (error) {
 	var iosMedia = false;
 	var mp3;
 
@@ -34,18 +34,10 @@ var soundService = (function () {
 		}
 	}
 
-	if (typeof device !== 'undefined') {
-		onDeviceReady();
-	} else {
-		document.addEventListener("deviceready", onDeviceReady, false);
-	}
-
 	return {
 		play: play,
 		pause: pause,
 		resume: resume,
-		testable: {
-			onDeviceReady: onDeviceReady
-		}
+		onDeviceReady: onDeviceReady
 	};
-})();
+})(logService);

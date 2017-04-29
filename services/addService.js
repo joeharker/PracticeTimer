@@ -21,15 +21,9 @@ var addService = (function () {
 		}
 	}
 
-	if (typeof device !== 'undefined') {
-		onDeviceReady();
-	} else {
-		document.addEventListener("deviceready", onDeviceReady, false);
-	}
-
 	return {
+		onDeviceReady: onDeviceReady,
 		testable: {
-			onDeviceReady: onDeviceReady,
 			setDevice: function (r) { device = r; }
 		}
 	};

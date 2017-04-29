@@ -11,7 +11,11 @@
 
         if (window.plugins && window.plugins.insomnia) {
             window.plugins.insomnia.keepAwake();
-        }
+		}
+
+		browserService.onDeviceReady();
+		soundService.onDeviceReady();
+		addService.onDeviceReady();
     }
 
     if (typeof device !== 'undefined') {

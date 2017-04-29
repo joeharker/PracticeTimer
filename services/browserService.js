@@ -11,16 +11,8 @@ var browserService = (function () {
 		target = '_system';
 	}
 
-	if (typeof device !== 'undefined') {
-		onDeviceReady();
-	} else {
-		document.addEventListener("deviceready", onDeviceReady, false);
-	}
-
 	return {
 		open: open,
-		testable: {
-			onDeviceReady: onDeviceReady
-		}
+		onDeviceReady: onDeviceReady
 	};
 })();
