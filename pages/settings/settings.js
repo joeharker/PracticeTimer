@@ -1,6 +1,6 @@
-﻿(function (settings, memory, error) {
-	'use strict';
+﻿'use strict';
 
+(function (settings, memory, error) {
 	function showObject(thatMap) {
 		document.location.href = '#pages/settings/setting.htm';
 

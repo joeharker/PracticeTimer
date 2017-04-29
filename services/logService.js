@@ -2,7 +2,7 @@
 
 var logService = (function () {
 	var maxRecursions = 0;
-
+	
 	//pretty logger
 	function addCell(row, text, clas) {
 		var cel = row.insertCell();

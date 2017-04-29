@@ -1,4 +1,6 @@
-﻿var init = (function (log, config, browser, sound, ad) {
+﻿'use strict';
+
+var init = (function (log, config, browser, sound, ad) {
 	log.init(config.debug);
 
 	function onDeviceReady() {

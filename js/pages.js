@@ -22,7 +22,7 @@ because javascript loads async you should use the requires attribute to ensure s
 	<script src="settings.js" requires="settingsService.js"></script>
 */
 
-(function (error) {
+(function () {
 	'use strict';
 
 	var lastPage = '';
@@ -39,12 +39,12 @@ because javascript loads async you should use the requires attribute to ensure s
 				if ([0,200].indexOf(xmlHttp.status) !== -1) {
 					callback(id, xmlHttp.responseText);
 				} else {
-					error.write(['Error: httpGet not 200', xmlHttp]);
+					console.log(['Error: httpGet not 200', xmlHttp]);
 				}
 			}
 		};
 		xmlHttp.onerror = function (e) {
-			error.write(['Error: httpGet', e]);
+			console.log(['Error: httpGet', e]);
 		};
 		xmlHttp.open('GET', url, true); // true for asynchronous 
 		xmlHttp.send(null);
@@ -72,7 +72,7 @@ because javascript loads async you should use the requires attribute to ensure s
 			}
 
 			if (count > 10) {
-				error.write([count + ' tries. ' + url + ' requires ' + requires]);
+				console.log([count + ' tries. ' + url + ' requires ' + requires]);
 			} else {
 				setTimeout(function () {
 					scriptGet(url, requires, count);
@@ -117,7 +117,7 @@ because javascript loads async you should use the requires attribute to ensure s
     				var requires = matchPath[3];
 
     				//prevent douplicates
-    				if (queued.indexOf(name) === -1 && name !== 'pages.js' && name !== 'errorService.js') {
+    				if (queued.indexOf(name) === -1 && name !== 'pages.js') {
     					queued.push(name);
 
     					//queue the paths by type
@@ -189,7 +189,7 @@ because javascript loads async you should use the requires attribute to ensure s
 			document.getElementById(newPage).style.display = 'inline';
 			lastPage = newPage;
 		} else {
-			error.write('NEED: <div id="' + newPage + '" class="js-page"></div>');
+			console.log('NEED: <div id="' + newPage + '" class="js-page"></div>');
 		}
 	};
 
@@ -228,7 +228,7 @@ because javascript loads async you should use the requires attribute to ensure s
 		    				httpGet(pages[s].id, render, pages[s].id);
 		    				break;
 		    			default:
-							error.write(['Error: page type unknow', pageType]);
+							console.log(['Error: page type unknow', pageType]);
 		    		}
 		    	}
 		    }
@@ -237,4 +237,4 @@ because javascript loads async you should use the requires attribute to ensure s
 		//init	//delay init until every page has async started
 	    window.onhashchange();
 	};
-})(logService);
+})();

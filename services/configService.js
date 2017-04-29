@@ -1,6 +1,7 @@
 ﻿'use strict';
 
 var configService = (function () {
+
 	var env = { DEV: 0, PROD: 1 };
 
 	var environment = env.DEV;
@@ -32,6 +33,6 @@ var configService = (function () {
 
 		return values;
 	}
-	
+
 	return init();
 })();

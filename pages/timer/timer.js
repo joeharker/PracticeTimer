@@ -1,6 +1,6 @@
-(function (settings, error, config, sound) {
-	'use strict';
+'use strict';
 
+(function (settings, error, config, sound) {
 	var lastSound = '';
 	var schedule = [],
 		instructionCount = 0;
