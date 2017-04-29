@@ -54,7 +54,7 @@
 	<plugin name="cordova-plugin-insomnia" />
 	<plugin name="cordova-plugin-inappbrowser" />
 	<plugin name="cordova-plugin-media" />
-	<plugin name="cordova-plugin-admobpro" source="npm" />          <!--adds-->
+	<plugin name="cordova-plugin-admobpro" />
 
 	<icon src="icon.png" />
 	<splash src="splash.png" />
