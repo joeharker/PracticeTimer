@@ -62,3 +62,14 @@ a:disabled {
 	margin: 0;
 	padding: 5px;
 }
+
+::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color: silver;
+	box-shadow: 0 0 1px grey;
+}

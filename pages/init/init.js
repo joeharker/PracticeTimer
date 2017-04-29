@@ -20,6 +20,7 @@ var init = (function (log, config, browser, sound, ad) {
 		ad.onDeviceReady();
     }
 
+	log.write(['typeof device', typeof device]);
     if (typeof device !== 'undefined') {
         onDeviceReady();
     } else {
