@@ -1,4 +1,4 @@
-﻿var init = (function (log, config) {
+﻿var init = (function (log, config, browser, sound, ad) {
 	log.init(config.debug);
 
 	function onDeviceReady() {
@@ -13,9 +13,9 @@
             window.plugins.insomnia.keepAwake();
 		}
 
-		browserService.onDeviceReady();
-		soundService.onDeviceReady();
-		addService.onDeviceReady();
+		browser.onDeviceReady();
+		sound.onDeviceReady();
+		ad.onDeviceReady();
     }
 
     if (typeof device !== 'undefined') {
@@ -30,4 +30,4 @@
 			setDevice: function (ref) { device = ref; }
 		}
 	}
-})(logService, configService);
+})(logService, configService, browserService, soundService, adService);

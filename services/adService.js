@@ -1,6 +1,6 @@
 'use strict';
 
-var addService = (function () {
+var adService = (function () {
 	var adid = '';
 
 	function onDeviceReady() {
