@@ -1,4 +1,5 @@
 @echo off
+echo down load openssl from https://slproweb.com/products/Win32OpenSSL.html
 
 set keyname=timer_key
 

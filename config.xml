@@ -1,5 +1,5 @@
 ﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
-		id="com.Joe007dev.Practice_Timer"
+		id="com.Joe007dev.Practice.Timer"
 		version="2.0.0"
 		android-versionCode="20001">
   <!--id="your.bundle.identifier" -->
