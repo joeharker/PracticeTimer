@@ -1,0 +1,5 @@
+Yes	Serve advertisements within the app
+
+No	Attribute this app installation to a previously served advertisement
+
+Yes	Attribute an action taken within this app to a previously served advertisement

@@ -13,8 +13,14 @@ echo generating the P12
 c:\OpenSSL-Win64\bin\openssl pkcs12 -export -inkey ios\%keyname%.key -in ios\%filename%.pem -out ios\%filename%.p12
 
 echo.
-echo GOTO https://build.phonegap.com/people/edit
+echo go to https://build.phonegap.com/people/edit
 echo upload the .p12 and .mobileprovision
+echo.
+echo go to https://itunesconnect.apple.com/
+echo to start prepping your app
+echo.
+echo go to https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12
+echo to get xcode
 
 pause
 cls
