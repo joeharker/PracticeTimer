@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -11,20 +11,23 @@
 	<script src="lib/jasmine-2.5.2/jasmine-html.js"></script>
 	<script src="lib/jasmine-2.5.2/boot.js"></script>
 	<script src="lib/Blanket-1.2.2/blanket.min.js" data-cover-adapter="lib/jasmine-2.5.2/jasmine.js"></script>
+	<script src="../../js/pages.js"></script>
 
 	<!-- include source files start -->
-	<script src="..\..\services\configService.js" data-cover></script>
+	<script src="..\..\services\adService.js" data-cover></script>
 	<script src="..\..\services\logService.js" data-cover></script>
+	<script src="..\..\services\soundService.js" data-cover></script>
+	<script src="..\..\services\browserService.js" data-cover></script>
+	<script src="..\..\services\configService.js" data-cover></script>
 	<script src="..\..\pages\init\init.js" data-cover></script>
 	<script src="..\..\services\memoryService.js" data-cover></script>
 	<script src="..\..\services\settingsService.js" data-cover></script>
 	<script src="..\..\pages\settings\settings.js" data-cover></script>
-	<script src="..\..\services\soundService.js" data-cover></script>
 	<script src="..\..\pages\timer\timer.js" data-cover></script>
-	<script src="..\..\services\browserService.js" data-cover></script>
 	<!-- include source files end -->
 
 	<!-- include spec files start -->
+	<script src="adService.spec.js"></script>
 	<script src="browserService.spec.js"></script>
 	<script src="configService.spec.js"></script>
 	<script src="init.spec.js"></script>
@@ -33,15 +36,16 @@
 	<script src="pages.spec.js"></script>
 	<script src="settings.spec.js"></script>
 	<script src="settingsService.spec.js"></script>
+	<script src="soundService.spec.js"></script>
 	<script src="timer.spec.js"></script>
 	<!-- include spec files end -->
 </head>
 
 <body>
-	
-	<div id="" class="js-page"></div>
-https://jasmine.github.io/2.5/introduction.html
-https://github.com/jasmine/jasmine#installation
-http://itstiredinhere.com/coverage/js/NonTDDSpecRunner.html
+	https://jasmine.github.io/2.5/introduction.html
+	https://github.com/jasmine/jasmine#installation
+	http://itstiredinhere.com/coverage/js/NonTDDSpecRunner.html
+
+	<div id="../../pages/timer/timer.htm" class="js-page" style="height: 1px!important; width: 1px!important; position: absolute; bottom: 0; right: 0;"></div>
 </body>
 </html>

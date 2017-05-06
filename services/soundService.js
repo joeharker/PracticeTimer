@@ -38,6 +38,6 @@ var soundService = (function (error) {
 		play: play,
 		pause: pause,
 		resume: resume,
-		onDeviceReady: onDeviceReady
+		onDeviceReady: onDeviceReady,
 	};
 })(logService);

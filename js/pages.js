@@ -193,6 +193,7 @@ because javascript loads async you should use the requires attribute to ensure s
 		}
 	};
 
+	var afterwindowonload = window.onload;
 	window.onload = function () {
 		var pageType;
 		var s;
@@ -235,6 +236,10 @@ because javascript loads async you should use the requires attribute to ensure s
 		}
 
 		//init	//delay init until every page has async started
-	    window.onhashchange();
+		window.onhashchange();
+
+		if (afterwindowonload) {
+			afterwindowonload();
+		}
 	};
 })();

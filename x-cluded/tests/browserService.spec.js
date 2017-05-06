@@ -11,7 +11,7 @@ describe('browserService', function () {
 	});
 
 	it('GIVEN nominal WHEN deviceready THEN keepAwake will be called', function () {
-		browserService.testable.onDeviceReady();
+		browserService.onDeviceReady();
 		browserService.open('www.test.com');
 		expect(window.open).toHaveBeenCalled();
 	});

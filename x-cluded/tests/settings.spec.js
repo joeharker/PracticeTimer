@@ -4,7 +4,10 @@
 describe('settings', function () {
 	'use strict';
 
-	it('TODO', function () {
+	it('GIVEN nominal WHEN saveEdit THEN nominal', function () {
+		testableSettings.testable.saveEdit();
+		testableSettings.testable.saveAdd();
+		testableSettings.testable.saveRemove();
 		expect(true).toBe(true);
 	});
 });

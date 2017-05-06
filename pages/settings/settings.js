@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-(function (settings, memory, error) {
+var testableSettings = (function (settings, memory, error) {
 	function showObject(thatMap) {
 		document.location.href = '#pages/settings/setting.htm';
 
@@ -283,4 +283,12 @@
 	}
 
 	init();
+
+	return {
+		testable: {
+			saveEdit: saveEdit,
+			saveAdd: saveAdd,
+			saveRemove: saveRemove
+		}
+	};
 })(settingsService, memoryService, logService);
