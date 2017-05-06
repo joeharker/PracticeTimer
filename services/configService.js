@@ -4,7 +4,7 @@ var configService = (function () {
 
 	var env = { DEV: 0, PROD: 1 };
 
-	var environment = env.DEV;
+	var environment = env.PROD;
 
 	var values = {
 			testable: {
