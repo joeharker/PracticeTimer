@@ -262,6 +262,7 @@ var testableSettings = (function (settings, memory, error) {
 
 	function saveRemove() {
 		if (document.getElementById('setting-object')) {
+			console.log('setting-object');
 			var thisMap = document.getElementById('setting-object').innerHTML.split('.');
 			var obj = memory.get(thisMap[0]);
 

@@ -19,10 +19,17 @@ describe('adService ', function () {
 		spyOn(AdMob, 'createBanner').and.callFake(function (a) { });
 
 		adService.testable.setAdMob(AdMob);
-		adService.testable.setDevice(device);
 	});
 
 	it('GIVEN nominal WHEN deviceready THEN createBanner will be called', function () {
+		device.platform = '';
+		adService.testable.setDevice(device);
+		adService.onDeviceReady();
+		expect(AdMob.createBanner).toHaveBeenCalled();
+	});
+
+	it('GIVEN iOS WHEN deviceready THEN createBanner will be called', function () {
+		adService.testable.setDevice(device);
 		adService.onDeviceReady();
 		expect(AdMob.createBanner).toHaveBeenCalled();
 	});

@@ -4,10 +4,13 @@
 describe('settings', function () {
 	'use strict';
 
-	it('GIVEN nominal WHEN saveEdit THEN nominal', function () {
-		testableSettings.testable.saveEdit();
-		testableSettings.testable.saveAdd();
-		testableSettings.testable.saveRemove();
-		expect(true).toBe(true);
+	it('GIVEN nominal WHEN saveEdit THEN nominal', function (done) {
+		//setTimeout(function () {
+			testableSettings.testable.saveEdit();
+			testableSettings.testable.saveAdd();
+			testableSettings.testable.saveRemove();
+			expect(true).toBe(true);
+			done();
+		//}, 3000);
 	});
 });

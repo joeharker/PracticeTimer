@@ -39,5 +39,10 @@ var soundService = (function (error) {
 		pause: pause,
 		resume: resume,
 		onDeviceReady: onDeviceReady,
+		testable: {
+			iosMedia: iosMedia,
+			mp3: mp3,
+			setDevice: function (r) { device = r; }
+		}
 	};
 })(logService);

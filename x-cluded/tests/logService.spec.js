@@ -14,7 +14,7 @@ describe('logService', function () {
 	});
 
 	it('Given debug, When window.onerror logService.write Then dumps all properties of the param to #debug div', function () {
-		window.onerror('msg', 'url', 1, 1, navigator);
+		window.onerror('msg', 'url', 1, 1, ['test error object', navigator]);
 		var debug = document.getElementById('debug');
 		expect(debug.innerHTML.indexOf('[object Navigator]')).not.toBe(-1);
 	});
